@@ -1,12 +1,86 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Data;
+using EventsAPI.Models;
+using EventsAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
-namespace EventsAPI.Controllers
+[ApiController]
+[Route("api/[controller]/[action]")]
+public class VenuesController : ControllerBase
 {
-    public class VenuesController : Controller
+    private readonly IVenuesService _venuesService;
+
+    public VenuesController(IVenuesService venuesService)
     {
-        public IActionResult Index()
+        _venuesService = venuesService;
+    }
+
+    [HttpGet(nameof(GetVenues))]
+    public async Task<IResult> GetVenues()
+    {
+        try
         {
-            return View();
+            return Results.Ok(await _venuesService.GetVenues());
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message);
+        }
+    }
+
+    [HttpGet(nameof(GetVenueById))]
+    public async Task<IResult> GetVenueById(int venueId)
+    {
+        try
+        {
+            var result = await _venuesService.GetVenueById(venueId);
+            if (result == null) return Results.NotFound();
+            return Results.Ok(result);
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message);
+        }
+    }
+
+    [HttpPost(nameof(InsertVenue))]
+    public async Task<IResult> InsertVenue(VenueEntity venue)
+    {
+        try
+        {
+            await _venuesService.InsertVenue(venue);
+            return Results.Ok();
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message);
+        }
+    }
+
+    [HttpPut(nameof(UpdateVenue))]
+    public async Task<IResult> UpdateVenue(VenueEntity venue)
+    {
+        try
+        {
+            await _venuesService.UpdateVenue(venue);
+            return Results.Ok();
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message);
+        }
+    }
+
+    [HttpDelete(nameof(DeleteVenue))]
+    public async Task<IResult> DeleteVenue(int venueId)
+    {
+        try
+        {
+            await _venuesService.DeleteVenue(venueId);
+            return Results.Ok();
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message);
         }
     }
 }
