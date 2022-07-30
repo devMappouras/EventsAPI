@@ -1,6 +1,6 @@
-﻿namespace EventsAPI.Models.Entities
+﻿namespace DataAccess.Models
 {
-    public class EventEntity
+    public class EventModel
     {
         public int EventId { get; set; }
         public string? EventTitle { get; set; }

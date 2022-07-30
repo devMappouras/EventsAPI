@@ -1,6 +1,6 @@
 ﻿namespace DataAccess.Models
 {
-    public class VenueEntity
+    public class VenueModel
     {
         public int VenueId { get; set; }
         public string? Name { get; set; }

@@ -1,18 +1,15 @@
-﻿using EventsAPI.Models;
-using System.Collections.Generic;
-
-namespace EventsAPI.Services.Interfaces
+﻿namespace EventsAPI.Services.Interfaces
 {
     public interface IVenuesService
     {
-        Task InsertVenue(VenueEntity venue);
+        Task InsertVenue(VenueModel venue);
 
-        Task UpdateVenue(VenueEntity venue);
+        Task UpdateVenue(VenueModel venue);
 
         Task DeleteVenue(int id);
 
-        Task<VenueEntity> GetVenueById(int id);
+        Task<VenueModel> GetVenueById(int id);
 
-        Task<IEnumerable<VenueEntity>> GetVenues();
+        Task<IEnumerable<VenueModel>> GetVenues();
     }
 }

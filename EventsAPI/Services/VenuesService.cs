@@ -12,23 +12,23 @@ namespace EventsAPI.Services
             _venuesRepository = venuesRepository;
         }
 
-        public async Task<IEnumerable<VenueEntity>> GetVenues()
+        public async Task<IEnumerable<VenueModel>> GetVenues()
         {
             return await _venuesRepository.GetVenues();
         }
 
-        public async Task<VenueEntity> GetVenueById(int id)
+        public async Task<VenueModel> GetVenueById(int id)
         {
             return await _venuesRepository.GetVenueById(id);
         }
 
-        public async Task InsertVenue(VenueEntity venue)
+        public async Task InsertVenue(VenueModel venue)
         {
 
             await _venuesRepository.InsertVenue(venue);
         }
 
-        public async Task UpdateVenue(VenueEntity venue)
+        public async Task UpdateVenue(VenueModel venue)
         {
             await _venuesRepository.UpdateVenue(venue);
         }

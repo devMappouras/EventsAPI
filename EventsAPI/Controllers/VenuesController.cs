@@ -1,6 +1,4 @@
-﻿using System.Data;
-using EventsAPI.Models;
-using EventsAPI.Services.Interfaces;
+﻿using EventsAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -43,7 +41,7 @@ public class VenuesController : ControllerBase
     }
 
     [HttpPost(nameof(InsertVenue))]
-    public async Task<IResult> InsertVenue(VenueEntity venue)
+    public async Task<IResult> InsertVenue(VenueModel venue)
     {
         try
         {
@@ -57,7 +55,7 @@ public class VenuesController : ControllerBase
     }
 
     [HttpPut(nameof(UpdateVenue))]
-    public async Task<IResult> UpdateVenue(VenueEntity venue)
+    public async Task<IResult> UpdateVenue(VenueModel venue)
     {
         try
         {

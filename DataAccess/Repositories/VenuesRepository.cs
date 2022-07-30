@@ -13,17 +13,17 @@ public class VenuesRepository : IVenuesRepository
         _db = db;
     }
 
-    public Task<IEnumerable<VenueEntity>> GetVenues() => _db.LoadData<VenueEntity, dynamic>("Venues_GetAll", new {} );
+    public Task<IEnumerable<VenueModel>> GetVenues() => _db.LoadData<VenueModel, dynamic>("Venues_GetAll", new {} );
 
-    public async Task<VenueEntity?> GetVenueById(int venueId)
+    public async Task<VenueModel?> GetVenueById(int venueId)
     {
-        var results = await _db.LoadData<VenueEntity, dynamic>("Venues_Get", new { VenueId = venueId });
+        var results = await _db.LoadData<VenueModel, dynamic>("Venues_Get", new { VenueId = venueId });
         return results.FirstOrDefault();
     }
 
-    public Task InsertVenue(VenueEntity venue) => _db.SaveData("Venues_Insert", new { venue.Name, venue.Location });
+    public Task InsertVenue(VenueModel venue) => _db.SaveData("Venues_Insert", new { venue.Name, venue.Location });
 
-    public Task UpdateVenue(VenueEntity venue) => _db.SaveData("Venues_Update", venue);
+    public Task UpdateVenue(VenueModel venue) => _db.SaveData("Venues_Update", venue);
 
     public Task DeleteVenue(int venueId) => _db.SaveData("Venues_Delete", new { VenueId = venueId });
 }

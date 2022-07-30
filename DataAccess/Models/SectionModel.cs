@@ -1,6 +1,6 @@
-﻿namespace EventsAPI.Models.Entities
+﻿namespace DataAccess.Models
 {
-    public class SectionEntity
+    public class SectionModel
     {
         public int SectionId { get; set; }
         public string Name { get; set; }

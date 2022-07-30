@@ -2,23 +2,10 @@ using DataAccess.DbAccess;
 using DataAccess.Repositories.Interfaces;
 using EventsAPI.Services;
 using EventsAPI.Services.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-
-//CM - TO REVIEW
-/*builder.Services.AddDbContext<AppContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});*/
-
-//Add Application Repositories
-//builder.Services.AddScoped<IVenuesRepository, VenuesRepository>();
-
-//Register dapper in scope    
-builder.Services.AddScoped<IDapper, Dapperr>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
