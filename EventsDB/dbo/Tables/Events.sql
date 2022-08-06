@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [dbo].[Events] (
     [EventId]          INT                NOT NULL,
-    [EventTitle]       NVARCHAR (200)     NULL,
-    [EventDescription] NVARCHAR (200)     NULL,
+    [EventTitle]       NVARCHAR (100)     NULL,
+    [EventDescription] NVARCHAR (MAX)     NULL,
     [EventDateTime]    DATETIMEOFFSET (7) NULL,
-    [BannerImage]      NVARCHAR (30)      NULL,
+    [BannerImage]      NVARCHAR (50)      NULL,
     [VenueId]          INT                NULL,
     [CollectionId]     INT                NULL,
     [OrganiserId]      INT                NULL,

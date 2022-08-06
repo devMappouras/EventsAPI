@@ -60,6 +60,7 @@
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\Store Procedures" />
     <Folder Include="dbo\Store Procedures\Venues" />
+    <Folder Include="dbo\Store Procedures\Events" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Collections.sql" />
@@ -72,6 +73,11 @@
     <Build Include="dbo\Store Procedures\Venues\Venues_GetAll.sql" />
     <Build Include="dbo\Store Procedures\Venues\Venues_Insert.sql" />
     <Build Include="dbo\Store Procedures\Venues\Venues_Update.sql" />
+    <Build Include="dbo\Store Procedures\Events\Events_Delete.sql" />
+    <Build Include="dbo\Store Procedures\Events\Events_Get.sql" />
+    <Build Include="dbo\Store Procedures\Events\Events_GetAll.sql" />
+    <Build Include="dbo\Store Procedures\Events\Events_Insert.sql" />
+    <Build Include="dbo\Store Procedures\Events\Events_Update.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="EventsDB.refactorlog" />
