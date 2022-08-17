@@ -12,7 +12,7 @@ public class VenuesController : ControllerBase
         _venuesService = venuesService;
     }
 
-    [HttpGet(nameof(GetVenues))]
+    [HttpGet]
     public async Task<IResult> GetVenues()
     {
         try
@@ -25,7 +25,7 @@ public class VenuesController : ControllerBase
         }
     }
 
-    [HttpGet(nameof(GetVenueById))]
+    [HttpGet]
     public async Task<IResult> GetVenueById(int venueId)
     {
         try
@@ -40,7 +40,7 @@ public class VenuesController : ControllerBase
         }
     }
 
-    [HttpPost(nameof(InsertVenue))]
+    [HttpPost]
     public async Task<IResult> InsertVenue(VenueModel venue)
     {
         try
@@ -54,7 +54,7 @@ public class VenuesController : ControllerBase
         }
     }
 
-    [HttpPut(nameof(UpdateVenue))]
+    [HttpPut]
     public async Task<IResult> UpdateVenue(VenueModel venue)
     {
         try
@@ -68,7 +68,7 @@ public class VenuesController : ControllerBase
         }
     }
 
-    [HttpDelete(nameof(DeleteVenue))]
+    [HttpDelete]
     public async Task<IResult> DeleteVenue(int venueId)
     {
         try

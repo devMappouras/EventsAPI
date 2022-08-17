@@ -12,7 +12,7 @@ public class EventsController : ControllerBase
         _eventsService = EventsService;
     }
 
-    [HttpGet(nameof(GetEvents))]
+    [HttpGet]
     public async Task<IResult> GetEvents()
     {
         try
@@ -25,7 +25,7 @@ public class EventsController : ControllerBase
         }
     }
 
-    [HttpGet(nameof(GetEventById))]
+    [HttpGet]
     public async Task<IResult> GetEventById(int EventId)
     {
         try
@@ -40,7 +40,7 @@ public class EventsController : ControllerBase
         }
     }
 
-    [HttpPost(nameof(InsertEvent))]
+    [HttpPost]
     public async Task<IResult> InsertEvent(EventModel Event)
     {
         try
@@ -54,7 +54,7 @@ public class EventsController : ControllerBase
         }
     }
 
-    [HttpPut(nameof(UpdateEvent))]
+    [HttpPut]
     public async Task<IResult> UpdateEvent(EventModel Event)
     {
         try
@@ -68,7 +68,7 @@ public class EventsController : ControllerBase
         }
     }
 
-    [HttpDelete(nameof(DeleteEvent))]
+    [HttpDelete]
     public async Task<IResult> DeleteEvent(int EventId)
     {
         try
