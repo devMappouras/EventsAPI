@@ -1,6 +1,8 @@
 ﻿using EventsAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
+namespace EventsAPI.Controllers;
+
 [ApiController]
 [Route("api/[controller]/[action]")]
 public class VenuesController : ControllerBase

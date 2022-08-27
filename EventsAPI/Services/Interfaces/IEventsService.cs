@@ -1,4 +1,6 @@
-﻿namespace EventsAPI.Services.Interfaces
+﻿using DataAccess.Models.Responses;
+
+namespace EventsAPI.Services.Interfaces
 {
     public interface IEventsService
     {
@@ -10,6 +12,6 @@
 
         Task<EventModel> GetEventById(int id);
 
-        Task<IEnumerable<EventModel>> GetEvents();
+        Task<IEnumerable<GetEventsResponse>> GetEvents();
     }
 }

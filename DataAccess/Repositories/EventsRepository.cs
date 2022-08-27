@@ -1,5 +1,6 @@
 ﻿using DataAccess.DbAccess;
 using DataAccess.Models;
+using DataAccess.Models.Responses;
 using DataAccess.Repositories.Interfaces;
 
 namespace DataAccess.Data;
@@ -13,7 +14,7 @@ public class EventsRepository : IEventsRepository
         _db = db;
     }
 
-    public async Task<IEnumerable<EventModel>> GetEvents() => await _db.LoadData<EventModel, dynamic>("Events_GetAll", new {} );
+    public async Task<IEnumerable<GetEventsResponse>> GetEvents() => await _db.LoadData<GetEventsResponse, dynamic>("Events_GetAll", new {} );
 
     public async Task<EventModel?> GetEventById(int EventId)
     {

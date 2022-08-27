@@ -68,7 +68,7 @@ public class EventsController : ControllerBase
         }
     }
 
-    [HttpDelete]
+    [HttpPost]
     public async Task<IResult> DeleteEvent(int EventId)
     {
         try
