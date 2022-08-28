@@ -1,15 +1,15 @@
-﻿CREATE PROCEDURE [dbo].[Events_Get]
-	@EventId INT
+﻿CREATE PROCEDURE [dbo].[Sections_Get]
+	@SectionId INT
 AS
 
-SELECT [EventId]
-      ,[EventTitle]
-      ,[EventDescription]
-      ,[EventDateTime]
+SELECT [SectionId]
+      ,[SectionTitle]
+      ,[SectionDescription]
+      ,[SectionDateTime]
       ,[BannerImage]
       ,[VenueId]
       ,[CollectionId]
       ,[OrganiserId]
 
-FROM [dbo].[Events]
-WHERE EventId = @EventId
+FROM [dbo].[Sections]
+WHERE SectionId = @SectionId

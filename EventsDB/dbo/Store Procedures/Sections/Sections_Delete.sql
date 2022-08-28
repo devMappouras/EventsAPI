@@ -1,6 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[Events_Delete]
-	@EventId INT
+﻿CREATE PROCEDURE [dbo].[Sections_Delete]
+	@SectionId INT
 AS
 
-DELETE FROM [dbo].[Events]
-WHERE EventId = @EventId
+DELETE FROM [dbo].[Sections]
+WHERE SectionId = @SectionId

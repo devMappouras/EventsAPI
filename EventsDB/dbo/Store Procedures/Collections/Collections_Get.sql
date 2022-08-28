@@ -1,15 +1,8 @@
-﻿CREATE PROCEDURE [dbo].[Events_Get]
-	@EventId INT
+﻿CREATE PROCEDURE [dbo].[Collections_Get]
+	@CollectionId INT
 AS
 
-SELECT [EventId]
-      ,[EventTitle]
-      ,[EventDescription]
-      ,[EventDateTime]
-      ,[BannerImage]
-      ,[VenueId]
-      ,[CollectionId]
-      ,[OrganiserId]
+SELECT [CollectionId], C.Name AS CollectionName
 
-FROM [dbo].[Events]
-WHERE EventId = @EventId
+FROM [dbo].[Collections]
+WHERE CollectionId = @CollectionId

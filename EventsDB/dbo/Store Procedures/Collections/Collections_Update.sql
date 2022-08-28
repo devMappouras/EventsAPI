@@ -1,21 +1,12 @@
-﻿CREATE PROCEDURE [dbo].[Events_Update]
-    @EventId INT,
-    @EventTitle NVARCHAR(100),
-    @EventDescription NVARCHAR(MAX),
-    @EventDateTime DateTime,
-    @BannerImage NVARCHAR(50),
-    @VenueId INT,
+﻿CREATE PROCEDURE [dbo].[Collections_Update]
     @CollectionId INT,
+    @CollectionName NVARCHAR(100),
     @OrganiserId INT
 AS
 
-UPDATE dbo.Events SET 
-    EventTitle = @EventTitle, 
-    EventDescription = @EventDescription, 
-    EventDateTime = @EventDateTime,
-    BannerImage = @BannerImage,
-    VenueId = @VenueId,
+UPDATE dbo.Collections SET
     CollectionId = @CollectionId,
+    CollectionName = @CollectionName,
     OrganiserId = @OrganiserId
 
-WHERE EventId = @EventId;
+WHERE CollectionId = @CollectionId;

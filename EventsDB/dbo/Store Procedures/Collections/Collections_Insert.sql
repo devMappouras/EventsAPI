@@ -1,12 +1,7 @@
-﻿CREATE PROCEDURE [dbo].[Events_Insert]
-    @EventTitle NVARCHAR(100),
-    @EventDescription NVARCHAR(MAX),
-    @EventDateTime DateTime,
-    @BannerImage NVARCHAR(50),
-    @VenueId INT,
-    @CollectionId INT,
+﻿CREATE PROCEDURE [dbo].[Collections_Insert]
+    @CollectionName NVARCHAR(100),
     @OrganiserId INT
 AS
 
-INSERT INTO dbo.Events (EventTitle ,EventDescription ,EventDateTime ,BannerImage ,VenueId ,CollectionId ,OrganiserId)
-VALUES (@EventTitle ,@EventDescription ,@EventDateTime ,@BannerImage ,@VenueId ,@CollectionId ,@OrganiserId);
+INSERT INTO dbo.Collections (CollectionName, OrganiserId)
+VALUES  (@CollectionName, @OrganiserId);

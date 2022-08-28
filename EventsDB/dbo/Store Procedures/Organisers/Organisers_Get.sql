@@ -1,15 +1,8 @@
-﻿CREATE PROCEDURE [dbo].[Events_Get]
-	@EventId INT
+﻿CREATE PROCEDURE [dbo].[Organisers_Get]
+	@OrganiserId INT
 AS
 
-SELECT [EventId]
-      ,[EventTitle]
-      ,[EventDescription]
-      ,[EventDateTime]
-      ,[BannerImage]
-      ,[VenueId]
-      ,[CollectionId]
-      ,[OrganiserId]
+SELECT [Name] AS OrganiserName, Location, Logo
 
-FROM [dbo].[Events]
-WHERE EventId = @EventId
+FROM [dbo].[Organisers]
+WHERE OrganiserId = @OrganiserId

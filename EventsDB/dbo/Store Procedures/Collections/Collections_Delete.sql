@@ -1,6 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[Events_Delete]
-	@EventId INT
+﻿CREATE PROCEDURE [dbo].[Collections_Delete]
+	@CollectionId INT
 AS
 
-DELETE FROM [dbo].[Events]
-WHERE EventId = @EventId
+DELETE FROM [dbo].[Collections]
+WHERE CollectionId = @CollectionId

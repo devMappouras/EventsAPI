@@ -1,17 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[Events_GetAll]
+﻿CREATE PROCEDURE [dbo].[Organisers_GetAll]
 AS
 
-SELECT [EventId]
-      ,[EventTitle]
-      ,[EventDescription]
-      ,[EventDateTime]
-      ,[BannerImage]
-      ,E.[VenueId]
-      ,V.Name AS VenueName
-      ,E.[CollectionId]
-      ,C.Name AS CollectionName
-      ,[OrganiserId]
+SELECT [Name] AS OrganiserName, Location, Logo
 
-FROM [dbo].[Events] E
-INNER JOIN Venues V ON V.VenueId = E.VenueId
-LEFT JOIN Collections C ON C.CollectionId = E.CollectionId
+FROM [dbo].[Organisers] E
