@@ -1,4 +1,5 @@
-﻿using EventsAPI.Services.Interfaces;
+﻿using DataAccess.Models;
+using EventsAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]

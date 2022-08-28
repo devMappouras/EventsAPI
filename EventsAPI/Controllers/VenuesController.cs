@@ -1,7 +1,6 @@
 ﻿using EventsAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-
-namespace EventsAPI.Controllers;
+using DataAccess.Models;
 
 [ApiController]
 [Route("api/[controller]/[action]")]
@@ -70,7 +69,7 @@ public class VenuesController : ControllerBase
         }
     }
 
-    [HttpDelete]
+    [HttpPost]
     public async Task<IResult> DeleteVenue(int venueId)
     {
         try

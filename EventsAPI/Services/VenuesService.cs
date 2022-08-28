@@ -1,5 +1,6 @@
 ﻿using DataAccess.Repositories.Interfaces;
 using EventsAPI.Services.Interfaces;
+using DataAccess.Models;
 
 namespace EventsAPI.Services
 {

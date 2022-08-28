@@ -1,15 +1,16 @@
-﻿namespace EventsAPI.Services.Interfaces
+﻿using DataAccess.Models;
+
+namespace EventsAPI.Services.Interfaces;
+
+public interface IVenuesService
 {
-    public interface IVenuesService
-    {
-        Task InsertVenue(VenueModel venue);
+    Task InsertVenue(VenueModel venue);
 
-        Task UpdateVenue(VenueModel venue);
+    Task UpdateVenue(VenueModel venue);
 
-        Task DeleteVenue(int id);
+    Task DeleteVenue(int id);
 
-        Task<VenueModel> GetVenueById(int id);
+    Task<VenueModel> GetVenueById(int id);
 
-        Task<IEnumerable<VenueModel>> GetVenues();
-    }
+    Task<IEnumerable<VenueModel>> GetVenues();
 }

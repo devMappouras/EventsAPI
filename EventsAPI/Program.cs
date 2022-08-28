@@ -1,3 +1,4 @@
+using DataAccess.Data;
 using DataAccess.DbAccess;
 using DataAccess.Repositories.Interfaces;
 using EventsAPI.Services;

@@ -1,85 +1,85 @@
-﻿using EventsAPI.Services.Interfaces;
+﻿using DataAccess.Models;
+using EventsAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EventsAPI.Controllers
+[ApiController]
+[Route("api/[controller]/[action]")]
+public class CollectionsController : ControllerBase
 {
-    public class CollectionsController : Controller
+    private readonly ICollectionsService _CollectionsService;
+
+    public CollectionsController(ICollectionsService CollectionsService)
     {
-        private readonly ICollectionsService _CollectionsService;
+        _CollectionsService = CollectionsService;
+    }
 
-        public CollectionsController(ICollectionsService CollectionsService)
+    [HttpGet]
+    public async Task<IResult> GetCollections()
+    {
+        try
         {
-            _CollectionsService = CollectionsService;
+            return Results.Ok(await _CollectionsService.GetCollections());
         }
-
-        [HttpGet]
-        public async Task<IResult> GetCollections()
+        catch (Exception ex)
         {
-            try
-            {
-                return Results.Ok(await _CollectionsService.GetCollections());
-            }
-            catch (Exception ex)
-            {
-                return Results.Problem(ex.Message);
-            }
+            return Results.Problem(ex.Message);
         }
+    }
 
-        [HttpGet]
-        public async Task<IResult> GetCollectionById(int CollectionId)
+    [HttpGet]
+    public async Task<IResult> GetCollectionById(int CollectionId)
+    {
+        try
         {
-            try
-            {
-                var result = await _CollectionsService.GetCollectionById(CollectionId);
-                if (result == null) return Results.NotFound();
-                return Results.Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return Results.Problem(ex.Message);
-            }
+            var result = await _CollectionsService.GetCollectionById(CollectionId);
+            if (result == null) return Results.NotFound();
+            return Results.Ok(result);
         }
-
-        [HttpPost]
-        public async Task<IResult> InsertCollection(CollectionModel Collection)
+        catch (Exception ex)
         {
-            try
-            {
-                await _CollectionsService.InsertCollection(Collection);
-                return Results.Ok();
-            }
-            catch (Exception ex)
-            {
-                return Results.Problem(ex.Message);
-            }
+            return Results.Problem(ex.Message);
         }
+    }
 
-        [HttpPut]
-        public async Task<IResult> UpdateCollection(CollectionModel Collection)
+    [HttpPost]
+    public async Task<IResult> InsertCollection(CollectionModel Collection)
+    {
+        try
         {
-            try
-            {
-                await _CollectionsService.UpdateCollection(Collection);
-                return Results.Ok();
-            }
-            catch (Exception ex)
-            {
-                return Results.Problem(ex.Message);
-            }
+            await _CollectionsService.InsertCollection(Collection);
+            return Results.Ok();
         }
-
-        [HttpPost]
-        public async Task<IResult> DeleteCollection(int CollectionId)
+        catch (Exception ex)
         {
-            try
-            {
-                await _CollectionsService.DeleteCollection(CollectionId);
-                return Results.Ok();
-            }
-            catch (Exception ex)
-            {
-                return Results.Problem(ex.Message);
-            }
+            return Results.Problem(ex.Message);
+        }
+    }
+
+    [HttpPut]
+    public async Task<IResult> UpdateCollection(CollectionModel Collection)
+    {
+        try
+        {
+            await _CollectionsService.UpdateCollection(Collection);
+            return Results.Ok();
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message);
+        }
+    }
+
+    [HttpPost]
+    public async Task<IResult> DeleteCollection(int CollectionId)
+    {
+        try
+        {
+            await _CollectionsService.DeleteCollection(CollectionId);
+            return Results.Ok();
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message);
         }
     }
 }

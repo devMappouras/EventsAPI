@@ -1,4 +1,5 @@
-﻿using DataAccess.Models.Responses;
+﻿using DataAccess.Models;
+using DataAccess.Models.Responses;
 using DataAccess.Repositories.Interfaces;
 using EventsAPI.Services.Interfaces;
 
