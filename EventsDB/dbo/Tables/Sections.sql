@@ -6,5 +6,3 @@
     CONSTRAINT [PK_Sections] PRIMARY KEY CLUSTERED ([SectionId] ASC),
     CONSTRAINT [FK_Sections_Venues] FOREIGN KEY ([VenueId]) REFERENCES [dbo].[Venues] ([VenueId])
 );
-
-

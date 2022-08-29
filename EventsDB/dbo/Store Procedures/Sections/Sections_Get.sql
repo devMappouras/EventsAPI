@@ -2,14 +2,6 @@
 	@SectionId INT
 AS
 
-SELECT [SectionId]
-      ,[SectionTitle]
-      ,[SectionDescription]
-      ,[SectionDateTime]
-      ,[BannerImage]
-      ,[VenueId]
-      ,[CollectionId]
-      ,[OrganiserId]
-
+SELECT [SectionId], [Name], [HierarchyId], [VenueId]
 FROM [dbo].[Sections]
 WHERE SectionId = @SectionId

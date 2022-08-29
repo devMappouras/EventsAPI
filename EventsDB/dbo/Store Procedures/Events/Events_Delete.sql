@@ -2,5 +2,6 @@
 	@EventId INT
 AS
 
+
 DELETE FROM [dbo].[Events]
 WHERE EventId = @EventId

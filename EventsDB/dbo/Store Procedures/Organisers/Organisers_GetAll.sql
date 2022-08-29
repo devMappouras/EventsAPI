@@ -2,5 +2,4 @@
 AS
 
 SELECT [Name] AS OrganiserName, Location, Logo
-
 FROM [dbo].[Organisers] E

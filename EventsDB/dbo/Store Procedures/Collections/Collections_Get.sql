@@ -1,8 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[Collections_Get]
-	@CollectionId INT
+	@CollectionId INT,
+    @OrganiserId INT
 AS
 
 SELECT [CollectionId], C.Name AS CollectionName
 
-FROM [dbo].[Collections]
-WHERE CollectionId = @CollectionId
+FROM [dbo].[Collections] C
+WHERE CollectionId = @CollectionId AND C.OrganiserId = @OrganiserId

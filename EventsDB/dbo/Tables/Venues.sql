@@ -4,5 +4,3 @@
     [Location] NVARCHAR (100) NULL,
     CONSTRAINT [PK_Venues] PRIMARY KEY CLUSTERED ([VenueId] ASC)
 );
-
-
