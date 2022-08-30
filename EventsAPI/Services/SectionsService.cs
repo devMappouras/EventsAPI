@@ -3,7 +3,7 @@ using DataAccess.Repositories.Interfaces;
 using SectionsAPI.Services.Interfaces;
 using DataAccess.Models;
 
-namespace SectionsAPI.Services
+namespace EventsAPI.Services
 {
     public class SectionsService : ISectionsService
     {

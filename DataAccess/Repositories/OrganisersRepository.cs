@@ -1,8 +1,9 @@
 ﻿using DataAccess.DbAccess;
 using DataAccess.Models;
 using DataAccess.Models.Responses;
+using DataAccess.Repositories.Interfaces;
 
-namespace DataAccess.Repositories.Interfaces;
+namespace DataAccess.Repositories;
 
 public class OrganisersRepository : IOrganisersRepository
 {

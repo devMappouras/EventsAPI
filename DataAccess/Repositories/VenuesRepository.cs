@@ -2,7 +2,7 @@
 using DataAccess.Models;
 using DataAccess.Repositories.Interfaces;
 
-namespace DataAccess.Data;
+namespace DataAccess.Repositories;
 
 public class VenuesRepository : IVenuesRepository
 {
@@ -13,7 +13,7 @@ public class VenuesRepository : IVenuesRepository
         _db = db;
     }
 
-    public Task<IEnumerable<VenueModel>> GetVenues() => _db.LoadData<VenueModel, dynamic>("Venues_GetAll", new {} );
+    public Task<IEnumerable<VenueModel>> GetVenues() => _db.LoadData<VenueModel, dynamic>("Venues_GetAll", new { });
 
     public async Task<VenueModel?> GetVenueById(int venueId)
     {

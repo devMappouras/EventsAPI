@@ -1,8 +1,9 @@
-using DataAccess.Data;
 using DataAccess.DbAccess;
+using DataAccess.Repositories;
 using DataAccess.Repositories.Interfaces;
 using EventsAPI.Services;
 using EventsAPI.Services.Interfaces;
+using SectionsAPI.Services.Interfaces;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -25,10 +26,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
 builder.Services.AddSingleton<IVenuesRepository, VenuesRepository>();
 builder.Services.AddSingleton<IEventsRepository, EventsRepository>();
+builder.Services.AddTransient<ICollectionsRepository, CollectionsRepository>();
+builder.Services.AddTransient<ISectionsRepository, SectionsRepository>();
+builder.Services.AddTransient<IOrganisersRepository, OrganisersRepository>();
 
 //Application Services DI
 builder.Services.AddTransient<IVenuesService, VenuesService>();
 builder.Services.AddTransient<IEventsService, EventsService>();
+builder.Services.AddTransient<ICollectionsService, CollectionsService>();
+builder.Services.AddTransient<ISectionsService, SectionsService>();
+builder.Services.AddTransient<IOrganisersService, OrganisersService>();
 
 
 

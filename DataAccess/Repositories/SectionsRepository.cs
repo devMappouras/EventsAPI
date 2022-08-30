@@ -3,7 +3,7 @@ using DataAccess.Models;
 using DataAccess.Models.Responses;
 using DataAccess.Repositories.Interfaces;
 
-namespace DataAccess.Data;
+namespace DataAccess.Repositories;
 
 public class SectionsRepository : ISectionsRepository
 {
@@ -14,16 +14,17 @@ public class SectionsRepository : ISectionsRepository
         _db = db;
     }
 
-    public async Task<IEnumerable<GetSectionsResponse>> GetSections() => await _db.LoadData<GetSectionsResponse, dynamic>("Sections_GetAll", new {} );
+    public async Task<IEnumerable<GetSectionsResponse>> GetSections() => await _db.LoadData<GetSectionsResponse, dynamic>("Sections_GetAll", new { });
 
     public async Task<SectionModel?> GetSectionById(int SectionId)
     {
-        var results = await _db.LoadData<SectionModel, dynamic>("Sections_Get", new { SectionId = SectionId });
+        var results = await _db.LoadData<SectionModel, dynamic>("Sections_Get", new { SectionId });
         return results.FirstOrDefault();
     }
 
-    public Task InsertSection(SectionModel Section) => _db.SaveData("Sections_Insert", 
-        new { 
+    public Task InsertSection(SectionModel Section) => _db.SaveData("Sections_Insert",
+        new
+        {
             Section.Name,
             Section.HierarchyId,
             Section.VenueId
@@ -31,5 +32,5 @@ public class SectionsRepository : ISectionsRepository
 
     public Task UpdateSection(SectionModel Section) => _db.SaveData("Sections_Update", Section);
 
-    public Task DeleteSection(int SectionId) => _db.SaveData("Sections_Delete", new { SectionId = SectionId });
+    public Task DeleteSection(int SectionId) => _db.SaveData("Sections_Delete", new { SectionId });
 }

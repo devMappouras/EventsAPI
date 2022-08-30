@@ -4,5 +4,5 @@
     @OrganiserId INT
 AS
 
-UPDATE dbo.Collections SET CollectionName = @CollectionName, OrganiserId = @OrganiserId  
+UPDATE dbo.Collections SET Name = @CollectionName, OrganiserId = @OrganiserId  
 WHERE CollectionId = @CollectionId

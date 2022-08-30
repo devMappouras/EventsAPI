@@ -3,7 +3,7 @@ using DataAccess.Models;
 using DataAccess.Models.Responses;
 using DataAccess.Repositories.Interfaces;
 
-namespace DataAccess.Data;
+namespace DataAccess.Repositories;
 
 public class EventsRepository : IEventsRepository
 {
@@ -14,26 +14,27 @@ public class EventsRepository : IEventsRepository
         _db = db;
     }
 
-    public async Task<IEnumerable<GetEventsResponse>> GetEvents() => await _db.LoadData<GetEventsResponse, dynamic>("Events_GetAll", new {} );
+    public async Task<IEnumerable<GetEventsResponse>> GetEvents() => await _db.LoadData<GetEventsResponse, dynamic>("Events_GetAll", new { });
 
     public async Task<EventModel?> GetEventById(int EventId)
     {
-        var results = await _db.LoadData<EventModel, dynamic>("Events_Get", new { EventId = EventId });
+        var results = await _db.LoadData<EventModel, dynamic>("Events_Get", new { EventId });
         return results.FirstOrDefault();
     }
 
-    public Task InsertEvent(EventModel Event) => _db.SaveData("Events_Insert", 
-        new { 
-            Event.EventTitle, 
-            Event.EventDescription, 
-            Event.EventDateTime, 
-            Event.BannerImage, 
-            Event.CollectionId, 
-            Event.OrganiserId, 
-            Event.VenueId 
+    public Task InsertEvent(EventModel Event) => _db.SaveData("Events_Insert",
+        new
+        {
+            Event.EventTitle,
+            Event.EventDescription,
+            Event.EventDateTime,
+            Event.BannerImage,
+            Event.CollectionId,
+            Event.OrganiserId,
+            Event.VenueId
         });
 
     public Task UpdateEvent(EventModel Event) => _db.SaveData("Events_Update", Event);
 
-    public Task DeleteEvent(int EventId) => _db.SaveData("Events_Delete", new { EventId = EventId });
+    public Task DeleteEvent(int EventId) => _db.SaveData("Events_Delete", new { EventId });
 }

@@ -3,5 +3,5 @@
     @OrganiserId INT
 AS
 
-INSERT INTO dbo.Collections (CollectionName, OrganiserId)
+INSERT INTO dbo.Collections (Name, OrganiserId)
 VALUES  (@CollectionName, @OrganiserId);
