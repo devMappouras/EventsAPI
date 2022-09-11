@@ -4,7 +4,7 @@ using EventsAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[Route("api/[controller]/[action]")]
+[Route("EventsApi/[controller]/[action]")]
 public class OrganisersController : ControllerBase
 {
     private readonly IOrganisersService _organisersService;

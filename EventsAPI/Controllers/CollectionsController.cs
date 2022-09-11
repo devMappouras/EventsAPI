@@ -3,7 +3,7 @@ using EventsAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[Route("api/[controller]/[action]")]
+[Route("EventsApi/[controller]/[action]")]
 public class CollectionsController : ControllerBase
 {
     private readonly ICollectionsService _CollectionsService;

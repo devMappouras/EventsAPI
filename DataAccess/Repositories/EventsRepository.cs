@@ -14,7 +14,8 @@ public class EventsRepository : IEventsRepository
         _db = db;
     }
 
-    public async Task<IEnumerable<GetEventsResponse>> GetEvents() => await _db.LoadData<GetEventsResponse, dynamic>("Events_GetAll", new { });
+    public async Task<IEnumerable<GetEventsResponse>> GetEvents() => 
+        await _db.LoadData<GetEventsResponse, dynamic>("Events_GetAll", new { OrganiserId = 1});
 
     public async Task<EventModel?> GetEventById(int EventId)
     {
@@ -34,7 +35,9 @@ public class EventsRepository : IEventsRepository
             Event.VenueId
         });
 
-    public Task UpdateEvent(EventModel Event) => _db.SaveData("Events_Update", Event);
+    public Task UpdateEvent(EventModel Event) => 
+        _db.SaveData("Events_Update", Event);
 
-    public Task DeleteEvent(int EventId) => _db.SaveData("Events_Delete", new { EventId });
+    public Task DeleteEvent(int EventId) => 
+        _db.SaveData("Events_Delete", new { EventId });
 }

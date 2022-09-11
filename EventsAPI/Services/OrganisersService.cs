@@ -26,7 +26,6 @@ public class OrganisersService : IOrganisersService
 
     public async Task InsertOrganiser(OrganiserModel Organiser)
     {
-
         await _organisersRepository.InsertOrganiser(Organiser);
     }
 

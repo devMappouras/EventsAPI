@@ -3,7 +3,7 @@ using SectionsAPI.Services.Interfaces;
 using DataAccess.Models;
 
 [ApiController]
-[Route("api/[controller]/[action]")]
+[Route("EventsApi/[controller]/[action]")]
 public class SectionsController : ControllerBase
 {
     private readonly ISectionsService _SectionsService;

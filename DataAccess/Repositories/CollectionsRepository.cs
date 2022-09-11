@@ -14,7 +14,7 @@ public class CollectionsRepository : ICollectionsRepository
         _db = db;
     }
 
-    public async Task<IEnumerable<GetCollectionsResponse>> GetCollections() => await _db.LoadData<GetCollectionsResponse, dynamic>("Collections_GetAll", new {} );
+    public async Task<IEnumerable<GetCollectionsResponse>> GetCollections() => await _db.LoadData<GetCollectionsResponse, dynamic>("Collections_GetAll", new { OrganiserId = 1} );
 
     public async Task<CollectionModel> GetCollectionById(int collectionId)
     {

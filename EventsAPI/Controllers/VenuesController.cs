@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using DataAccess.Models;
 
 [ApiController]
-[Route("api/[controller]/[action]")]
+[Route("EventsApi/[controller]/[action]")]
 public class VenuesController : ControllerBase
 {
     private readonly IVenuesService _venuesService;

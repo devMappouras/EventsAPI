@@ -9,6 +9,6 @@ public class GetCollectionsResponse
     public string? BannerImage { get; set; } = string.Empty;
     public int? VenueId { get; set; }
     public string? VenueName { get; set; } = string.Empty;
-    public int? CollectionId { get; set; }
+    public int CollectionId { get; set; }
     public string? CollectionName { get; set; } = string.Empty;
 }
