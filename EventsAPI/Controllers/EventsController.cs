@@ -2,6 +2,7 @@
 using DataAccess.Models.Auth;
 using DataAccess.Models.Responses;
 using EventsAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -20,6 +21,7 @@ public class EventsController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<IResult> GetEvents()
     {
         try

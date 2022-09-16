@@ -1,27 +1,26 @@
+using System.Text;
 using DataAccess.DbAccess;
 using DataAccess.Repositories;
 using DataAccess.Repositories.Interfaces;
 using EventsAPI.Services;
 using EventsAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using SectionsAPI.Services.Interfaces;
+using Swashbuckle.AspNetCore.Filters;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: MyAllowSpecificOrigins, policy => {
-        policy.WithOrigins("http://localhost:4200", "https://localhost:4200").AllowAnyHeader().AllowAnyMethod();
-    });
-});
-
 builder.Services.AddControllers();
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
+//Allows to access Authorised User Identifier
+builder.Services.AddHttpContextAccessor();
+
+/* REPOSITORY - SERVICES DI */
 //lDataAccess DI
 builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
 builder.Services.AddSingleton<IVenuesRepository, VenuesRepository>();
@@ -31,21 +30,48 @@ builder.Services.AddTransient<ISectionsRepository, SectionsRepository>();
 builder.Services.AddTransient<IOrganisersRepository, OrganisersRepository>();
 
 //Application Services DI
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddTransient<IVenuesService, VenuesService>();
 builder.Services.AddTransient<IEventsService, EventsService>();
 builder.Services.AddTransient<ICollectionsService, CollectionsService>();
 builder.Services.AddTransient<ISectionsService, SectionsService>();
 builder.Services.AddTransient<IOrganisersService, OrganisersService>();
 
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+//Swagger and Swagger Athentication
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        Description = "Standard Authorization header using the Bearer scheme (\"bearer {token}\")",
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
+    });
 
+    options.OperationFilter<SecurityRequirementsOperationFilter>();
+});
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
+            .GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value)),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins, policy => {
+        policy.WithOrigins("http://localhost:4200", "https://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-app.UseRouting();
-
-app.UseCors(MyAllowSpecificOrigins);
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -54,8 +80,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(MyAllowSpecificOrigins);
+
+app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
-
+//app.UseStaticFiles();
+//app.UseRouting();
 app.MapControllers();
-
 app.Run();
