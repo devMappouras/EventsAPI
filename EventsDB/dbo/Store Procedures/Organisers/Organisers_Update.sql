@@ -6,7 +6,6 @@
 AS
 
 UPDATE dbo.Organisers SET
-    OrganiserId = @OrganiserId,
     Name = @Name,
     Location = @Location,
     Logo = @Logo

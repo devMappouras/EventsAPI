@@ -22,15 +22,26 @@ public class OrganisersRepository : IOrganisersRepository
         return results.FirstOrDefault();
     }
 
-    public Task InsertOrganiser(OrganiserModel Organiser) => _db.SaveData("Organisers_Insert",
+    public Task RegisterOrganiser(OrganiserModel Organiser) => _db.SaveData("Organisers_Insert",
         new
         {
+            Organiser.Username,
+            Organiser.Password,
+            Organiser.PasswordSalt,
             Organiser.Name,
             Organiser.Location,
-            Organiser.Logo
+            Organiser.Logo,
+            RoleId = 1
         });
+
+    public async Task<OrganiserModel> GetOrganiserInfoByUsername(string Username)
+    {
+        var results = await _db.LoadData<OrganiserModel, dynamic>("Organisers_GetInfoForValidation", new { Username });
+        return results.FirstOrDefault();
+    }
+
 
     public Task UpdateOrganiser(OrganiserModel Organiser) => _db.SaveData("Organisers_Update", Organiser);
 
-    public Task DeleteOrganiser(int OrganiserId) => _db.SaveData("Organisers_Delete", new { OrganiserId = OrganiserId });
+    public Task DeleteOrganiser(int OrganiserId) => _db.SaveData("Organisers_Delete", new { OrganiserId });
 }

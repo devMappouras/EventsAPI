@@ -8,6 +8,7 @@ public interface IOrganisersRepository
     Task DeleteOrganiser(int id);
     Task<OrganiserModel?> GetOrganiserById(int id);
     Task<IEnumerable<GetOrganisersResponse>> GetOrganisers();
-    Task InsertOrganiser(OrganiserModel Organiser);
+    Task RegisterOrganiser(OrganiserModel Organiser);
     Task UpdateOrganiser(OrganiserModel Organiser);
+    Task<OrganiserModel> GetOrganiserInfoByUsername(string username);
 }

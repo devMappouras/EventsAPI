@@ -13,14 +13,4 @@
     CONSTRAINT [FK_Events_Organisers1] FOREIGN KEY ([OrganiserId]) REFERENCES [dbo].[Organisers] ([OrganiserId]),
     CONSTRAINT [FK_Events_Venues] FOREIGN KEY ([VenueId]) REFERENCES [dbo].[Venues] ([VenueId])
 );
-
-
-
-
 GO
-
-
-GO
-
-
-

@@ -45,11 +45,6 @@ public class AuthController : ControllerBase
     [HttpPost]
     public async Task<IResult> Login(UserDto request)
     {
-        if (user.Username != request.Username)
-        {
-            return Results.Problem("User not found.");
-        }
-
         if (!VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
         {
             return Results.Problem("Wrong password.");
