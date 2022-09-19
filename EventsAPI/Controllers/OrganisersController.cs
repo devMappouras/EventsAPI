@@ -1,7 +1,9 @@
 ﻿using DataAccess.Models;
 using DataAccess.Models.Auth;
+using DataAccess.Models.Responses;
 using EventsAPI.Services;
 using EventsAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -65,9 +67,13 @@ public class OrganisersController : ControllerBase
     {
         try
         {
-            var tokens = await _organisersService.LoginOrganiser(user);
-            SetRefreshToken(tokens.RefreshTokenModel);
-            return Results.Ok(tokens.Token);
+            var loginResponse = await _organisersService.LoginOrganiser(user);
+            SetRefreshToken(loginResponse.RefreshTokenModel);
+            return Results.Ok(new LoginResponse
+            {
+                Token = loginResponse.Token,
+                OrganiserInfo = loginResponse.OrganiserInfo
+            });
         }
         catch (Exception ex)
         {
@@ -90,7 +96,7 @@ public class OrganisersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IResult> DeleteOrganiser(int OrganiserId)
+    public async Task<IResult> DisableOrganiser(int OrganiserId)
     {
         try
         {

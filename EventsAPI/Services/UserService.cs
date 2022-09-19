@@ -2,7 +2,9 @@
 using EventsAPI.Services.Interfaces;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using DataAccess.Models;
 using DataAccess.Models.Auth;
+using DataAccess.Models.Enums;
 using Microsoft.IdentityModel.Tokens;
 
 namespace EventsAPI.Services;
@@ -18,22 +20,21 @@ public class UserService : IUserService
         _configuration = configuration;
     }
 
-    public string GetMyName()
+    public int GetLoggedInOrganiserId()
     {
-        var result = string.Empty;
-        if (_httpContextAccessor.HttpContext != null)
-        {
-            result = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Name);
-        }
-        return result;
+        return _httpContextAccessor.HttpContext != null ? int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)) : 0;
     }
 
-    public async Task<string> CreateToken(UserModel user)
+    public async Task<string> CreateToken(UserModel user, OrganiserModel? organiser)
     {
+        var organiserRole = organiser?.RoleId != null ? organiser.RoleId.ToString() : "Basic";
+        var organiserId = organiser?.OrganiserId != null ? organiser.OrganiserId.ToString() : "0";
+
         List<Claim> claims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, user.Username),
-            new Claim(ClaimTypes.Role, "Admin")
+            new Claim(ClaimTypes.Role, organiserRole),
+            new Claim(ClaimTypes.NameIdentifier, organiserId)
         };
 
         var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));
@@ -46,7 +47,6 @@ public class UserService : IUserService
             signingCredentials: creds);
 
         var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-
         return jwt;
     }
 

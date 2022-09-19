@@ -21,7 +21,6 @@ public class EventsController : ControllerBase
     }
 
     [HttpGet]
-    [AllowAnonymous]
     public async Task<IResult> GetEvents()
     {
         try

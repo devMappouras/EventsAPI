@@ -47,8 +47,6 @@ public class OrganisersService : IOrganisersService
         if (OrganiserInfo == null)
             throw new Exception("User was not Found");
 
-        //var encodedPasswordHash = System.Text.Encoding.UTF8.GetBytes(OrganiserInfo.Password);
-        //var encodedPasswordSalt = System.Text.Encoding.UTF8.GetBytes(OrganiserInfo.PasswordSalt);
         var encodedPasswordHash = Convert.FromBase64String(OrganiserInfo.Password);
         var encodedPasswordSalt = Convert.FromBase64String(OrganiserInfo.PasswordSalt);
 
@@ -60,13 +58,21 @@ public class OrganisersService : IOrganisersService
         userModel.PasswordHash = encodedPasswordHash;
         userModel.PasswordSalt = encodedPasswordSalt;
         
-        var token = _userService.CreateToken(userModel);
+        var token = _userService.CreateToken(userModel, OrganiserInfo);
         var refreshToken = _userService.GenerateRefreshToken();
 
         return new LoginOrganiserResponse
         {
             Token = token.Result,
-            RefreshTokenModel = refreshToken.Result
+            RefreshTokenModel = refreshToken.Result,
+            OrganiserInfo = new GetOrganisersResponse
+            {
+                Username = OrganiserInfo.Username,
+                Name = OrganiserInfo.Name,
+                Location = OrganiserInfo.Location,
+                Logo = OrganiserInfo.Logo,
+                RoleId = OrganiserInfo.RoleId
+            }
         };
     }
 

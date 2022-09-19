@@ -23,13 +23,7 @@ public class AuthController : ControllerBase
         _userService = userService;
     }
 
-    [HttpGet, Authorize]
-    public ActionResult<string> GetMe()
-    {
-        var userName = _userService.GetMyName();
-        return Ok(userName);
-    }
-
+    [Obsolete]
     [HttpPost]
     public async Task<IResult> Register(UserDto request)
     {
@@ -42,6 +36,7 @@ public class AuthController : ControllerBase
         return Results.Ok(user);
     }
 
+    [Obsolete]
     [HttpPost]
     public async Task<IResult> Login(UserDto request)
     {
@@ -77,6 +72,7 @@ public class AuthController : ControllerBase
         return Ok(token);
     }
 
+    [NonAction]
     private RefreshTokenModel GenerateRefreshToken()
     {
         var refreshToken = new RefreshTokenModel
@@ -89,6 +85,7 @@ public class AuthController : ControllerBase
         return refreshToken;
     }
 
+    [NonAction]
     private void SetRefreshToken(RefreshTokenModel newRefreshToken)
     {
         var cookieOptions = new CookieOptions
@@ -103,6 +100,7 @@ public class AuthController : ControllerBase
         user.TokenExpires = newRefreshToken.Expires;
     }
 
+    [NonAction]
     private string CreateToken(UserModel user)
     {
         List<Claim> claims = new List<Claim>
@@ -125,7 +123,8 @@ public class AuthController : ControllerBase
 
         return jwt;
     }
-
+    
+    [NonAction]
     private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
     {
         using (var hmac = new HMACSHA512())
@@ -135,6 +134,7 @@ public class AuthController : ControllerBase
         }
     }
 
+    [NonAction]
     private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
     {
         using (var hmac = new HMACSHA512(passwordSalt))

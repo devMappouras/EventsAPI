@@ -2,13 +2,10 @@
 
 public class GetOrganisersResponse
 {
-    public int EventId { get; set; }
-    public string? EventTitle { get; set; } = string.Empty;
-    public string? EventDescription { get; set; } = string.Empty;
-    public DateTimeOffset? EventDateTime { get; set; }
-    public string? BannerImage { get; set; } = string.Empty;
-    public int? VenueId { get; set; }
-    public string? VenueName { get; set; } = string.Empty;
-    public int? CollectionId { get; set; }
-    public string? CollectionName { get; set; } = string.Empty;
+    public int OrganiserId { get; set; }
+    public string Username { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
+    public string Location { get; set; } = string.Empty;
+    public string Logo { get; set; } = string.Empty;
+    public bool RoleId { get; set; }
 }

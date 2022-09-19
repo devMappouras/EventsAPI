@@ -1,10 +1,11 @@
-﻿using DataAccess.Models.Auth;
+﻿using DataAccess.Models;
+using DataAccess.Models.Auth;
 
 namespace EventsAPI.Services.Interfaces;
 
 public interface IUserService
 {
-    string GetMyName();
-    Task<string> CreateToken(UserModel user);
+    int GetLoggedInOrganiserId();
+    Task<string> CreateToken(UserModel user, OrganiserModel? organiser);
     Task<RefreshTokenModel> GenerateRefreshToken();
 }

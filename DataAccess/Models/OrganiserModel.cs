@@ -1,4 +1,6 @@
-﻿namespace DataAccess.Models
+﻿using DataAccess.Models.Enums;
+
+namespace DataAccess.Models
 {
     public class OrganiserModel
     {
@@ -9,5 +11,6 @@
         public string Name { get; set; } = string.Empty;
         public string Location { get; set; } = string.Empty;
         public string Logo { get; set; } = string.Empty;
+        public bool RoleId { get; set; }
     }
 }
