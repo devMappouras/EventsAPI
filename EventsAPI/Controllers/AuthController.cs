@@ -51,6 +51,7 @@ public class AuthController : ControllerBase
         return Results.Ok(token);
     }
 
+    [Obsolete]
     [HttpPost]
     public async Task<ActionResult<string>> RefreshToken()
     {

@@ -28,18 +28,19 @@ namespace EventsAPI.Services
 
         public async Task InsertEvent(EventModel Event)
         {
-
+            Event.OrganiserId = _userService.GetLoggedInOrganiserId();
             await _EventsRepository.InsertEvent(Event);
         }
 
         public async Task UpdateEvent(EventModel Event)
         {
+            Event.OrganiserId = _userService.GetLoggedInOrganiserId();
             await _EventsRepository.UpdateEvent(Event);
         }
 
-        public async Task DeleteEvent(int EventsId)
+        public async Task DeleteEvent(int EventId)
         {
-            await _EventsRepository.DeleteEvent(EventsId);
+            await _EventsRepository.DeleteEvent(EventId);
         }
     }
 }

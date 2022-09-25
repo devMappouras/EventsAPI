@@ -5,7 +5,7 @@ namespace DataAccess.Repositories.Interfaces;
 
 public interface IEventsRepository
 {
-    Task DeleteEvent(int id);
+    Task DeleteEvent(int EventId);
     Task<EventModel?> GetEventById(int id);
     Task<IEnumerable<GetEventsResponse>> GetEvents(int OrganiserId);
     Task InsertEvent(EventModel Event);

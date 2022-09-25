@@ -1,10 +1,10 @@
 ﻿using DataAccess.Models;
 using DataAccess.Models.Auth;
 using DataAccess.Models.Responses;
-using EventsAPI.Services;
 using EventsAPI.Services.Interfaces;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
+namespace EventsAPI.Controllers;
 
 [ApiController]
 [Route("EventsApi/[controller]/[action]")]
@@ -74,6 +74,27 @@ public class OrganisersController : ControllerBase
                 Token = loginResponse.Token,
                 OrganiserInfo = loginResponse.OrganiserInfo
             });
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message);
+        }
+    }
+    
+    [HttpPost]
+    public async Task<IResult> RefreshToken()
+    {
+        try
+        {
+            var refreshToken = Request.Cookies["refreshToken"];
+            if (!user.RefreshToken.Equals(refreshToken) || user.TokenExpires < DateTime.Now)
+            {
+                return Results.Unauthorized();
+            }
+            
+            var tokenResponse = await _organisersService.RefreshToken(user);
+            SetRefreshToken(tokenResponse.RefreshTokenModel);
+            return Results.Ok(tokenResponse);
         }
         catch (Exception ex)
         {

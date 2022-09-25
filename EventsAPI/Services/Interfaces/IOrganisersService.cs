@@ -11,5 +11,6 @@ public interface IOrganisersService
     Task<IEnumerable<GetOrganisersResponse>> GetOrganisers();
     Task RegisterOrganiser(OrganiserModel Organiser);
     Task<LoginOrganiserResponse> LoginOrganiser(UserDto user);
+    Task<LoginOrganiserResponse> RefreshToken(UserModel user);
     Task UpdateOrganiser(OrganiserModel Organiser);
 }

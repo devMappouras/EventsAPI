@@ -76,6 +76,26 @@ public class OrganisersService : IOrganisersService
         };
     }
 
+    public async Task<LoginOrganiserResponse> RefreshToken(UserModel user)
+    {
+        var organiserInfo = await _organisersRepository.GetOrganiserInfoByUsername(user.Username);
+        var token = _userService.CreateToken(user, organiserInfo);
+        var newRefreshToken = _userService.GenerateRefreshToken();
+        return new LoginOrganiserResponse
+        {
+            Token = token.Result,
+            RefreshTokenModel = newRefreshToken.Result,
+            OrganiserInfo = new GetOrganisersResponse
+            {
+                Username = organiserInfo.Username,
+                Name = organiserInfo.Name,
+                Location = organiserInfo.Location,
+                Logo = organiserInfo.Logo,
+                RoleId = organiserInfo.RoleId
+            }
+        };
+    }    
+    
     public async Task UpdateOrganiser(OrganiserModel Organiser)
     {
         await _organisersRepository.UpdateOrganiser(Organiser);

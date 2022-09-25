@@ -9,7 +9,7 @@ namespace EventsAPI.Services.Interfaces
 
         Task UpdateEvent(EventModel Event);
 
-        Task DeleteEvent(int id);
+        Task DeleteEvent(int EventId);
 
         Task<EventModel> GetEventById(int id);
 

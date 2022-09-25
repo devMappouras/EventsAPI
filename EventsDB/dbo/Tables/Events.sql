@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Events] (
-    [EventId]          INT                NOT NULL,
+    [EventId]          INT                NOT NULL IDENTITY (1,1),
     [EventTitle]       NVARCHAR (100)     NULL,
     [EventDescription] NVARCHAR (MAX)     NULL,
     [EventDateTime]    DATETIMEOFFSET (7) NULL,
