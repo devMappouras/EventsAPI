@@ -66,6 +66,11 @@
     <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
+    <Build Include="dbo\Store Procedures\Products\Products_Delete.sql" />
+    <Build Include="dbo\Store Procedures\Products\Products_Get.sql" />
+    <Build Include="dbo\Store Procedures\Products\Products_GetAll.sql" />
+    <Build Include="dbo\Store Procedures\Products\Products_Insert.sql" />
+    <Build Include="dbo\Store Procedures\Products\Products_Update.sql" />
     <Build Include="dbo\Tables\Collections.sql" />
     <Build Include="dbo\Tables\Events.sql" />
     <Build Include="dbo\Tables\Hierarchies.sql" />
