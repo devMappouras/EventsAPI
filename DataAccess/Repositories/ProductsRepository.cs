@@ -26,10 +26,11 @@ public class ProductsRepository : IProductsRepository
     public Task InsertProduct(ProductModel Product) => _db.SaveData("Products_Insert",
         new
         {
-            Product.Name,
+            Product.VenueId,
             Product.Capacity,
-            Product.SectionId,
-            Product.OrganiserId
+            Product.OrganiserId,
+            Product.HierarchyId,
+            Product.Price
         });
 
     public Task UpdateProduct(ProductModel Product) => 

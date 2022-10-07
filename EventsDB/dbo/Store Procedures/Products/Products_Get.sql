@@ -4,10 +4,10 @@
 AS
 
 SELECT [ProductId]
-     ,[SectionId]
-     ,[OrganiserId]
+     ,[VenueId]
      ,[Capacity]
-     ,[Name]
+     ,[HierarchyId]
+     ,[Price]
 
 FROM [dbo].[Products] P
 

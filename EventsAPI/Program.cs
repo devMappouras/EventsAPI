@@ -28,6 +28,7 @@ builder.Services.AddSingleton<IEventsRepository, EventsRepository>();
 builder.Services.AddTransient<ICollectionsRepository, CollectionsRepository>();
 builder.Services.AddTransient<ISectionsRepository, SectionsRepository>();
 builder.Services.AddTransient<IOrganisersRepository, OrganisersRepository>();
+builder.Services.AddTransient<IProductsRepository, ProductsRepository>();
 
 //Application Services DI
 builder.Services.AddScoped<IUserService, UserService>();
@@ -36,6 +37,7 @@ builder.Services.AddTransient<IEventsService, EventsService>();
 builder.Services.AddTransient<ICollectionsService, CollectionsService>();
 builder.Services.AddTransient<ISectionsService, SectionsService>();
 builder.Services.AddTransient<IOrganisersService, OrganisersService>();
+builder.Services.AddTransient<IProductsService, ProductsService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 //Swagger and Swagger Athentication

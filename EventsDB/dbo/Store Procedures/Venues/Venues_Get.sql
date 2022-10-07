@@ -2,6 +2,6 @@
 	@VenueId INT
 AS
 
-SELECT [VenueId] ,[Name] ,[Location]
+SELECT [VenueId] ,[Name] ,[Address], [Town], [CountryId]
 FROM [dbo].[Venues]
 WHERE VenueId = @VenueId

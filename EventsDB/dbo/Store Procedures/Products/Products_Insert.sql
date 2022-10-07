@@ -1,9 +1,10 @@
 ﻿CREATE PROCEDURE [dbo].[Products_Insert]
-    @SectionId INT,
+    @VenueId INT,
+    @HierarchyId INT,
     @OrganiserId INT,
     @Capacity INT,
-    @Name NVARCHAR(200)
+    @Price INT
 AS
 
-INSERT INTO dbo.Products (SectionId ,OrganiserId ,Capacity ,Name)
-VALUES (@SectionId ,@OrganiserId ,@Capacity ,@Name);
+INSERT INTO dbo.Products (VenueId ,HierarchyId ,OrganiserId ,Capacity, Price)
+VALUES (@VenueId ,@HierarchyId ,@OrganiserId ,@Capacity, @Price);

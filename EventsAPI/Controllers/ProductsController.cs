@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EventsAPI.Controllers;
 
 [ApiController]
-[Route("ProductsApi/[controller]/[action]")]
+[Route("EventsAPI/[controller]/[action]")]
 public class ProductsController : ControllerBase
 {
     private readonly IProductsService _productsService;

@@ -21,7 +21,7 @@ public class VenuesRepository : IVenuesRepository
         return results.FirstOrDefault();
     }
 
-    public Task InsertVenue(VenueModel venue) => _db.SaveData("Venues_Insert", new { venue.Name, venue.Location });
+    public Task InsertVenue(VenueModel venue) => _db.SaveData("Venues_Insert", new { venue.Name, venue.Address, venue.Town, venue.CountryId });
 
     public Task UpdateVenue(VenueModel venue) => _db.SaveData("Venues_Update", venue);
 

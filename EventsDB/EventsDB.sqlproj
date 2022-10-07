@@ -64,6 +64,7 @@
     <Folder Include="dbo\Store Procedures\Sections" />
     <Folder Include="dbo\Store Procedures\Collections" />
     <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Store Procedures\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Store Procedures\Products\Products_Delete.sql" />
@@ -107,6 +108,7 @@
     <Build Include="dbo\Tables\Products.sql" />
     <Build Include="dbo\Tables\EventProducts.sql" />
     <Build Include="dbo\Tables\DefaultProducts.sql" />
+    <Build Include="dbo\Tables\Countries.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="EventsDB.refactorlog" />

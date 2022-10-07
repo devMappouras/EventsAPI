@@ -1,15 +1,15 @@
 ﻿CREATE PROCEDURE [dbo].[Products_Update]
     @ProductId INT,
-    @SectionId INT,
-    @OrganiserId INT,
+    @VenueId INT,
+    @HierarchyId INT,
     @Capacity INT,
-    @Name NVARCHAR(200)
+    @Price INT
 AS
 
 UPDATE dbo.Products SET
-    @SectionId = @SectionId,
-    @OrganiserId = @OrganiserId,
+    @VenueId = @VenueId,
+    @HierarchyId = @HierarchyId,
     @Capacity = @Capacity,
-    @Name = @Name,
+    @Price = @Price
 
 WHERE ProductId = @ProductId;
