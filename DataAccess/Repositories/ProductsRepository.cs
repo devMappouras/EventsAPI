@@ -27,7 +27,6 @@ public class ProductsRepository : IProductsRepository
         new
         {
             Product.VenueId,
-            Product.Capacity,
             Product.OrganiserId,
             Product.HierarchyId,
             Product.Price

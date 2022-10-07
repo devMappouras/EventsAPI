@@ -1,6 +1,7 @@
 ﻿using DataAccess.Repositories.Interfaces;
 using EventsAPI.Services.Interfaces;
 using DataAccess.Models;
+using DataAccess.Models.Responses;
 
 namespace EventsAPI.Services
 {
@@ -13,12 +14,12 @@ namespace EventsAPI.Services
             _venuesRepository = venuesRepository;
         }
 
-        public async Task<IEnumerable<VenueModel>> GetVenues()
+        public async Task<IEnumerable<GetVenuesResponse>> GetVenues()
         {
             return await _venuesRepository.GetVenues();
         }
 
-        public async Task<VenueModel> GetVenueById(int id)
+        public async Task<GetVenuesResponse> GetVenueById(int id)
         {
             return await _venuesRepository.GetVenueById(id);
         }

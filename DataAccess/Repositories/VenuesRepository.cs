@@ -1,5 +1,6 @@
 ﻿using DataAccess.DbAccess;
 using DataAccess.Models;
+using DataAccess.Models.Responses;
 using DataAccess.Repositories.Interfaces;
 
 namespace DataAccess.Repositories;
@@ -13,11 +14,11 @@ public class VenuesRepository : IVenuesRepository
         _db = db;
     }
 
-    public Task<IEnumerable<VenueModel>> GetVenues() => _db.LoadData<VenueModel, dynamic>("Venues_GetAll", new { });
+    public Task<IEnumerable<GetVenuesResponse>> GetVenues() => _db.LoadData<GetVenuesResponse, dynamic>("Venues_GetAll", new { });
 
-    public async Task<VenueModel?> GetVenueById(int venueId)
+    public async Task<GetVenuesResponse?> GetVenueById(int venueId)
     {
-        var results = await _db.LoadData<VenueModel, dynamic>("Venues_Get", new { VenueId = venueId });
+        var results = await _db.LoadData<GetVenuesResponse, dynamic>("Venues_Get", new { VenueId = venueId });
         return results.FirstOrDefault();
     }
 

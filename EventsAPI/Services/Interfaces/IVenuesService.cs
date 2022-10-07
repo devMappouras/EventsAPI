@@ -1,4 +1,5 @@
 ﻿using DataAccess.Models;
+using DataAccess.Models.Responses;
 
 namespace EventsAPI.Services.Interfaces;
 
@@ -10,7 +11,7 @@ public interface IVenuesService
 
     Task DeleteVenue(int id);
 
-    Task<VenueModel> GetVenueById(int id);
+    Task<GetVenuesResponse> GetVenueById(int id);
 
-    Task<IEnumerable<VenueModel>> GetVenues();
+    Task<IEnumerable<GetVenuesResponse>> GetVenues();
 }

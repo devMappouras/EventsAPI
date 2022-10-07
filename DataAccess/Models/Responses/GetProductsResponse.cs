@@ -2,13 +2,12 @@
 
 public class GetProductsResponse
 {
-    public int EventId { get; set; }
-    public string? EventTitle { get; set; } = string.Empty;
-    public string? EventDescription { get; set; } = string.Empty;
-    public DateTimeOffset? EventDateTime { get; set; }
-    public string? BannerImage { get; set; } = string.Empty;
-    public int? VenueId { get; set; }
+    public int ProductId { get; set; }
+    public int VenueId { get; set; }
     public string? VenueName { get; set; } = string.Empty;
-    public int? CollectionId { get; set; }
-    public string? CollectionName { get; set; } = string.Empty;
+    public int Capacity { get; set; }
+    public int OrganiserId { get; set; }
+    public int HierarchyId { get; set; }
+    public string? HierarchyName { get; set; } = string.Empty;
+    public decimal Price { get; set; }
 }
