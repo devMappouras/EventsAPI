@@ -1,4 +1,5 @@
 ﻿using DataAccess.Models;
+using DataAccess.Models.Responses;
 using EventsAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +10,14 @@ namespace EventsAPI.Controllers;
 public class ProductsController : ControllerBase
 {
     private readonly IProductsService _productsService;
-
-    public ProductsController(IProductsService productsService)
+    private readonly IVenuesService _venuesService;
+    private readonly IHierarchiesService _hierarchiesService;
+    
+    public ProductsController(IProductsService productsService, IVenuesService venuesService, IHierarchiesService hierarchiesService)
     {
         _productsService = productsService;
+        _venuesService = venuesService;
+        _hierarchiesService = hierarchiesService;
     }
 
     [HttpGet]
@@ -85,19 +90,19 @@ public class ProductsController : ControllerBase
         }
     }
     
-    /*[HttpGet]
-    public async Task<IResult> GetVenuesAndCollections()
+    [HttpGet]
+    public async Task<IResult> GetVenuesAndHierarchies()
     {
         try
         {
             var venues = await _venuesService.GetVenues();
-            var collections = await _collectionsService.GetCollections();
+            var hierarchies = await _hierarchiesService.GetHierarchies();
 
-            return Results.Ok(new GetVenuesAndCollections(venues.ToList(), collections.ToList()));
+            return Results.Ok(new GetVenuesAndHierarchies(venues.ToList(), hierarchies.ToList()));
         }
         catch (Exception ex)
         {
             return Results.Problem(ex.Message);
         }
-    }*/
+    }
 }

@@ -57,7 +57,6 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="dbo" />
-    <Folder Include="dbo\Store Procedures" />
     <Folder Include="dbo\Store Procedures\Venues" />
     <Folder Include="dbo\Store Procedures\Events" />
     <Folder Include="dbo\Store Procedures\Organisers" />
@@ -67,6 +66,7 @@
     <Folder Include="dbo\Store Procedures\Products\" />
   </ItemGroup>
   <ItemGroup>
+    <Build Include="dbo\Store Procedures\Hierarchies\Venues_GetAll.sql" />
     <Build Include="dbo\Store Procedures\Products\Products_Delete.sql" />
     <Build Include="dbo\Store Procedures\Products\Products_Get.sql" />
     <Build Include="dbo\Store Procedures\Products\Products_GetAll.sql" />
