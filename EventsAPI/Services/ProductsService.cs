@@ -42,5 +42,11 @@ namespace EventsAPI.Services
         {
             await _ProductsRepository.DeleteProduct(ProductId);
         }
+
+        public async Task<GetEventProductsResponse> GetEventProducts(int EventId)
+        {
+            var OrganiserId = _userService.GetLoggedInOrganiserId();
+            return await _ProductsRepository.GetEventProducts(EventId, OrganiserId);
+        }
     }
 }

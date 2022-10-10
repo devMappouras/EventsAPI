@@ -89,4 +89,19 @@ public class ProductsController : ControllerBase
             return Results.Problem(ex.Message);
         }
     }
+    
+    [HttpPost]
+    public async Task<IResult> GetEventProducts([FromBody] int EventId)
+    {
+        try
+        {
+            var result = await _productsService.GetEventProducts(EventId);
+            if (result == null) return Results.NotFound();
+            return Results.Ok(result);
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message);
+        }
+    }
 }

@@ -32,9 +32,19 @@ public class ProductsRepository : IProductsRepository
             Product.Price
         });
 
-    public Task UpdateProduct(ProductModel Product) => 
-        _db.SaveData("Products_Update", Product);
+    public Task UpdateProduct(ProductModel Product) => _db.SaveData("Products_Update", Product);
 
-    public Task DeleteProduct(int ProductId) => 
-        _db.SaveData("Products_Delete", new { ProductId });
+    public Task DeleteProduct(int ProductId) => _db.SaveData("Products_Delete", new { ProductId });
+    
+    public async Task<GetEventProductsResponse> GetEventProducts(int EventId, int OrganiserId)     
+    {
+        var availableProducts = await _db.LoadData<GetProductsResponse, dynamic>("Products_GetAvailableProducts", new { EventId, OrganiserId });
+        var selectedProducts = await _db.LoadData<GetProductsResponse, dynamic>("Products_GetSelectedProducts", new { EventId });
+        
+        return new GetEventProductsResponse
+        {
+            AvailableProducts = availableProducts.ToList(),
+            SelectedProducts = selectedProducts.ToList()
+        };
+    }
 }

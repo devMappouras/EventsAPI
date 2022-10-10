@@ -10,4 +10,5 @@ public interface IProductsRepository
     Task<IEnumerable<GetProductsResponse>> GetProducts(int OrganiserId);
     Task InsertProduct(ProductModel Product);
     Task UpdateProduct(ProductModel Product);
+    Task<GetEventProductsResponse> GetEventProducts(int EventId, int OrganiserId);
 }

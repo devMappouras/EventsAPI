@@ -14,5 +14,7 @@ namespace EventsAPI.Services.Interfaces
         Task<ProductModel> GetProductById(int id);
 
         Task<IEnumerable<GetProductsResponse>> GetProducts();
+        
+        Task<GetEventProductsResponse> GetEventProducts(int EventId);
     }
 }
