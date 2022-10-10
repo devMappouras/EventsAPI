@@ -17,5 +17,10 @@ namespace EventsAPI.Services
         {
             return await _hierarchiesRepository.GetHierarchies();
         }
+        
+        public async Task<IEnumerable<GenericIdAndNameModel>> GetVenueHierarchies(int venueId)
+        {
+            return await _hierarchiesRepository.GetVenueHierarchies(venueId);
+        }
     }
 }

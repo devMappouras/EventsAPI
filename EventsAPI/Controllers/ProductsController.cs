@@ -89,20 +89,4 @@ public class ProductsController : ControllerBase
             return Results.Problem(ex.Message);
         }
     }
-    
-    [HttpGet]
-    public async Task<IResult> GetVenuesAndHierarchies()
-    {
-        try
-        {
-            var venues = await _venuesService.GetVenues();
-            var hierarchies = await _hierarchiesService.GetHierarchies();
-
-            return Results.Ok(new GetVenuesAndHierarchies(venues.ToList(), hierarchies.ToList()));
-        }
-        catch (Exception ex)
-        {
-            return Results.Problem(ex.Message);
-        }
-    }
 }

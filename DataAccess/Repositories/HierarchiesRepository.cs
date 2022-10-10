@@ -13,5 +13,9 @@ public class HierarchiesRepository : IHierarchiesRepository
         _db = db;
     }
 
-    public Task<IEnumerable<GenericIdAndNameModel>> GetHierarchies() => _db.LoadData<GenericIdAndNameModel, dynamic>("Hierarchies_GetAll", new { });
+    public Task<IEnumerable<GenericIdAndNameModel>> GetHierarchies() => 
+        _db.LoadData<GenericIdAndNameModel, dynamic>("Hierarchies_GetAll", new { });
+    
+    public Task<IEnumerable<GenericIdAndNameModel>> GetVenueHierarchies(int VenueId) => 
+        _db.LoadData<GenericIdAndNameModel, dynamic>("Hierarchies_GetAllByVenue", new { VenueId });
 }

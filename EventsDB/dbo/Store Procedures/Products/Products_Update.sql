@@ -2,12 +2,13 @@
     @ProductId INT,
     @VenueId INT,
     @HierarchyId INT,
-    @Price INT
+    @OrganiserId INT,
+    @Price DECIMAL(18,2)
 AS
 
 UPDATE dbo.Products SET
-    @VenueId = @VenueId,
-    @HierarchyId = @HierarchyId,
-    @Price = @Price
+    VenueId = @VenueId,
+    HierarchyId = @HierarchyId,
+    Price = @Price
 
-WHERE ProductId = @ProductId;
+WHERE ProductId = @ProductId AND OrganiserId = @OrganiserId;

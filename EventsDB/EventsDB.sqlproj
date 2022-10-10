@@ -64,8 +64,13 @@
     <Folder Include="dbo\Store Procedures\Collections" />
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\Store Procedures\Products\" />
+    <Folder Include="dbo\Store Procedures\" />
+    <Folder Include="dbo\Store Procedures\Countries\" />
+    <Folder Include="dbo\Store Procedures\Hierarchies\" />
   </ItemGroup>
   <ItemGroup>
+    <Build Include="dbo\Store Procedures\Countries\Countries_GetAll.sql" />
+    <Build Include="dbo\Store Procedures\Hierarchies\Hierarchies_GetAllByVenue.sql" />
     <Build Include="dbo\Store Procedures\Hierarchies\Venues_GetAll.sql" />
     <Build Include="dbo\Store Procedures\Products\Products_Delete.sql" />
     <Build Include="dbo\Store Procedures\Products\Products_Get.sql" />

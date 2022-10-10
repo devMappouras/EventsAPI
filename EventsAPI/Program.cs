@@ -29,6 +29,8 @@ builder.Services.AddTransient<ICollectionsRepository, CollectionsRepository>();
 builder.Services.AddTransient<ISectionsRepository, SectionsRepository>();
 builder.Services.AddTransient<IOrganisersRepository, OrganisersRepository>();
 builder.Services.AddTransient<IProductsRepository, ProductsRepository>();
+builder.Services.AddTransient<ICountriesRepository, CountriesRepository>();
+builder.Services.AddTransient<IHierarchiesRepository, HierarchiesRepository>();
 
 //Application Services DI
 builder.Services.AddScoped<IUserService, UserService>();
@@ -38,6 +40,8 @@ builder.Services.AddTransient<ICollectionsService, CollectionsService>();
 builder.Services.AddTransient<ISectionsService, SectionsService>();
 builder.Services.AddTransient<IOrganisersService, OrganisersService>();
 builder.Services.AddTransient<IProductsService, ProductsService>();
+builder.Services.AddTransient<ICountriesService, CountriesService>();
+builder.Services.AddTransient<IHierarchiesService, HierarchiesService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 //Swagger and Swagger Athentication
