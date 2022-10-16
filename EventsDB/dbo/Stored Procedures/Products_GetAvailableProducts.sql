@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Products_GetAvailableProducts
+﻿CREATE PROCEDURE [dbo].[Products_GetAvailableProducts]
     @EventId INT,
 	@OrganiserId INT
 AS
@@ -14,4 +14,7 @@ SELECT [ProductId]
 FROM [dbo].[Products] P
 INNER JOIN Hierarchies H ON H.HierarchyId = P.HierarchyId
 
-WHERE P.OrganiserId = @OrganiserId AND P.VenueId = @VenueId
+WHERE P.OrganiserId = @OrganiserId 
+AND P.VenueId = @VenueId 
+AND P.ProductId NOT IN (SELECT EP.ProductId FROM EventProducts EP
+                WHERE EP.EventId = @EventId)

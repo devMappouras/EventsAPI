@@ -51,8 +51,8 @@ public class ProductsRepository : IProductsRepository
         };
     }
     
-    public async Task SetEventProducts(SetEventProductsRequest request)    
+    public async Task SetEventProducts(SetEventProductsRequest request)
     {
-        await _db.SaveData("Products_SetAvailableProducts", new { request.EventId, request.ProductIds });
+        await _db.SaveData("Products_SetAvailableProducts", new { request.EventId, request.ProductsIds });
     }
 }

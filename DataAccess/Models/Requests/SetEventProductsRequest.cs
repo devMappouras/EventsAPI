@@ -2,6 +2,12 @@
 
 public class SetEventProductsRequest
 {
-    public int EventId { get; set; }
-    public string ProductIds { get; set; } = String.Empty;
+    public SetEventProductsRequest(int eventId, string productsIds)
+    {
+        EventId = eventId;
+        ProductsIds = productsIds;
+    }
+
+    public int EventId { get; }
+    public string ProductsIds { get; }
 }

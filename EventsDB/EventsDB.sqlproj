@@ -116,6 +116,7 @@
     <Build Include="dbo\Tables\Countries.sql" />
     <Build Include="dbo\Stored Procedures\Products_GetSelectedProducts.sql" />
     <Build Include="dbo\Stored Procedures\Products_GetAvailableProducts.sql" />
+    <Build Include="dbo\Stored Procedures\Products_SetAvailableProducts.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="EventsDB.refactorlog" />
