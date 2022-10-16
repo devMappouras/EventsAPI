@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[Products] (
-    [ProductId]   INT NOT NULL,
-    [VenueId]     INT NOT NULL,
-    [OrganiserId] INT NOT NULL,
-    [HierarchyId] INT NOT NULL,
+    [ProductId]   INT             IDENTITY (1, 1) NOT NULL,
+    [VenueId]     INT             NOT NULL,
+    [OrganiserId] INT             NOT NULL,
+    [HierarchyId] INT             NOT NULL,
     [Price]       DECIMAL (18, 2) NOT NULL,
     CONSTRAINT [PK_Products] PRIMARY KEY CLUSTERED ([ProductId] ASC),
     CONSTRAINT [FK_Products_Hierarchies] FOREIGN KEY ([HierarchyId]) REFERENCES [dbo].[Hierarchies] ([HierarchyId]),

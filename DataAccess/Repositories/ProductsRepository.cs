@@ -1,7 +1,10 @@
-﻿using DataAccess.DbAccess;
+﻿using System.Data.SqlClient;
+using DataAccess.DbAccess;
 using DataAccess.Models;
+using DataAccess.Models.Requests;
 using DataAccess.Models.Responses;
 using DataAccess.Repositories.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace DataAccess.Repositories;
 
@@ -46,5 +49,10 @@ public class ProductsRepository : IProductsRepository
             AvailableProducts = availableProducts.ToList(),
             SelectedProducts = selectedProducts.ToList()
         };
+    }
+    
+    public async Task SetEventProducts(SetEventProductsRequest request)    
+    {
+        await _db.SaveData("Products_SetAvailableProducts", new { request.EventId, request.ProductIds });
     }
 }

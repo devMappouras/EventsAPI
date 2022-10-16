@@ -1,4 +1,5 @@
 ﻿using DataAccess.Models;
+using DataAccess.Models.Requests;
 using DataAccess.Models.Responses;
 using EventsAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -98,6 +99,20 @@ public class ProductsController : ControllerBase
             var result = await _productsService.GetEventProducts(EventId);
             if (result == null) return Results.NotFound();
             return Results.Ok(result);
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message);
+        }
+    }
+    
+    [HttpPost]
+    public async Task<IResult> SetEventProducts(SetEventProductsRequest request)
+    {
+        try
+        {
+            await _productsService.SetEventProducts(request);
+            return Results.Ok();
         }
         catch (Exception ex)
         {

@@ -1,5 +1,6 @@
 ﻿using DataAccess.Models.Responses;
 using DataAccess.Models;
+using DataAccess.Models.Requests;
 
 namespace EventsAPI.Services.Interfaces
 {
@@ -16,5 +17,6 @@ namespace EventsAPI.Services.Interfaces
         Task<IEnumerable<GetProductsResponse>> GetProducts();
         
         Task<GetEventProductsResponse> GetEventProducts(int EventId);
+        Task SetEventProducts(SetEventProductsRequest request);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DataAccess.Models;
+using DataAccess.Models.Requests;
 using DataAccess.Models.Responses;
 using DataAccess.Repositories.Interfaces;
 using EventsAPI.Services.Interfaces;
@@ -47,6 +48,11 @@ namespace EventsAPI.Services
         {
             var OrganiserId = _userService.GetLoggedInOrganiserId();
             return await _ProductsRepository.GetEventProducts(EventId, OrganiserId);
+        }        
+        
+        public async Task SetEventProducts(SetEventProductsRequest request)
+        {
+            await _ProductsRepository.SetEventProducts(request);
         }
     }
 }

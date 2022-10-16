@@ -67,6 +67,7 @@
     <Folder Include="dbo\Store Procedures\" />
     <Folder Include="dbo\Store Procedures\Countries\" />
     <Folder Include="dbo\Store Procedures\Hierarchies\" />
+    <Folder Include="dbo\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Store Procedures\Countries\Countries_GetAll.sql" />
@@ -112,8 +113,9 @@
     <Build Include="dbo\Store Procedures\Organisers\Organisers_GetInfoForValidation.sql" />
     <Build Include="dbo\Tables\Products.sql" />
     <Build Include="dbo\Tables\EventProducts.sql" />
-    <Build Include="dbo\Tables\DefaultProducts.sql" />
     <Build Include="dbo\Tables\Countries.sql" />
+    <Build Include="dbo\Stored Procedures\Products_GetSelectedProducts.sql" />
+    <Build Include="dbo\Stored Procedures\Products_GetAvailableProducts.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="EventsDB.refactorlog" />
