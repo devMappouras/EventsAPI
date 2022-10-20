@@ -1,5 +1,10 @@
 ﻿CREATE PROCEDURE [dbo].[Sections_GetAll]
+    @VenueId INT
 AS
 
-SELECT [SectionId], [Name], [HierarchyId], [VenueId]
-FROM [dbo].[Sections]
+SELECT [SectionId], S.[Name], S.[HierarchyId], H.Name AS HierarchyName
+
+FROM [dbo].[Sections] S
+INNER JOIN Hierarchies H ON H.HierarchyId = S.HierarchyId
+
+WHERE VenueId = @VenueId

@@ -13,6 +13,6 @@ namespace SectionsAPI.Services.Interfaces
 
         Task<SectionModel> GetSectionById(int id);
 
-        Task<IEnumerable<GetSectionsResponse>> GetSections();
+        Task<IEnumerable<GetSectionsResponse>> GetSections(int VenueId);
     }
 }

@@ -14,7 +14,8 @@ public class SectionsRepository : ISectionsRepository
         _db = db;
     }
 
-    public async Task<IEnumerable<GetSectionsResponse>> GetSections() => await _db.LoadData<GetSectionsResponse, dynamic>("Sections_GetAll", new { });
+    public async Task<IEnumerable<GetSectionsResponse>> GetSections(int VenueId) => 
+        await _db.LoadData<GetSectionsResponse, dynamic>("Sections_GetAll", new { VenueId });
 
     public async Task<SectionModel?> GetSectionById(int SectionId)
     {

@@ -14,9 +14,9 @@ namespace EventsAPI.Services
             _SectionsRepository = SectionsRepository;
         }
 
-        public async Task<IEnumerable<GetSectionsResponse>> GetSections()
+        public async Task<IEnumerable<GetSectionsResponse>> GetSections(int VenueId)
         {
-            return await _SectionsRepository.GetSections();
+            return await _SectionsRepository.GetSections(VenueId);
         }
 
         public async Task<SectionModel> GetSectionById(int id)

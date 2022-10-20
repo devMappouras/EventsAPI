@@ -14,11 +14,11 @@ public class SectionsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IResult> GetSections()
+    public async Task<IResult> GetSections(int VenueId)
     {
         try
         {
-            return Results.Ok(await _SectionsService.GetSections());
+            return Results.Ok(await _SectionsService.GetSections(VenueId));
         }
         catch (Exception ex)
         {
@@ -27,7 +27,7 @@ public class SectionsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IResult> GetSectionById(int SectionId)
+    public async Task<IResult> GetSectionById([FromBody] int SectionId)
     {
         try
         {
