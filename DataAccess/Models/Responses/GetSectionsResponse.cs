@@ -6,4 +6,5 @@ public class GetSectionsResponse
     public string? Name { get; set; } = string.Empty;
     public int HierarchyId { get; set; }
     public string? HierarchyName { get; set; } = string.Empty;
+    public int DefaultCapacity { get; set; }
 }

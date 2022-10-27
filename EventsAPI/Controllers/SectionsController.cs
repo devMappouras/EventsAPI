@@ -70,7 +70,7 @@ public class SectionsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IResult> DeleteSection(int SectionId)
+    public async Task<IResult> DeleteSection([FromBody] int SectionId)
     {
         try
         {

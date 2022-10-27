@@ -28,7 +28,8 @@ public class SectionsRepository : ISectionsRepository
         {
             Section.Name,
             Section.HierarchyId,
-            Section.VenueId
+            Section.VenueId,
+            Section.DefaultCapacity
         });
 
     public Task UpdateSection(SectionModel Section) => _db.SaveData("Sections_Update", Section);

@@ -11,3 +11,10 @@
 
 
 
+
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [IX_Unique_Sections_Venues]
+    ON [dbo].[Sections]([VenueId] ASC, [HierarchyId] ASC, [Name] ASC);
+
