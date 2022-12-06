@@ -31,6 +31,7 @@ builder.Services.AddTransient<IOrganisersRepository, OrganisersRepository>();
 builder.Services.AddTransient<IProductsRepository, ProductsRepository>();
 builder.Services.AddTransient<ICountriesRepository, CountriesRepository>();
 builder.Services.AddTransient<IHierarchiesRepository, HierarchiesRepository>();
+builder.Services.AddTransient<ICustomersRepository, CustomersRepository>();
 
 //Application Services DI
 builder.Services.AddScoped<IUserService, UserService>();
@@ -42,6 +43,7 @@ builder.Services.AddTransient<IOrganisersService, OrganisersService>();
 builder.Services.AddTransient<IProductsService, ProductsService>();
 builder.Services.AddTransient<ICountriesService, CountriesService>();
 builder.Services.AddTransient<IHierarchiesService, HierarchiesService>();
+builder.Services.AddTransient<ICustomersService, CustomersService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 //Swagger and Swagger Athentication
@@ -73,7 +75,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins, policy => {
-        policy.WithOrigins("http://localhost:4200", "https://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+        //policy.WithOrigins("http://localhost:4200", "https://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
     });
 });
 

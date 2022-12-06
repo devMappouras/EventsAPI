@@ -68,6 +68,7 @@
     <Folder Include="dbo\Store Procedures\Countries\" />
     <Folder Include="dbo\Store Procedures\Hierarchies\" />
     <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="dbo\Store Procedures\Customers" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Store Procedures\Countries\Countries_GetAll.sql" />
@@ -117,6 +118,15 @@
     <Build Include="dbo\Stored Procedures\Products_GetSelectedProducts.sql" />
     <Build Include="dbo\Stored Procedures\Products_GetAvailableProducts.sql" />
     <Build Include="dbo\Stored Procedures\Products_SetAvailableProducts.sql" />
+    <Build Include="dbo\Tables\PurchaseStatus.sql" />
+    <Build Include="dbo\Tables\Purchases.sql" />
+    <Build Include="dbo\Tables\Customers.sql" />
+    <Build Include="dbo\Store Procedures\Customers\Customers_Delete.sql" />
+    <Build Include="dbo\Store Procedures\Customers\Customers_Get.sql" />
+    <Build Include="dbo\Store Procedures\Customers\Customers_GetAll.sql" />
+    <Build Include="dbo\Store Procedures\Customers\Customers_GetInfoForValidation.sql" />
+    <Build Include="dbo\Store Procedures\Customers\Customers_Insert.sql" />
+    <Build Include="dbo\Store Procedures\Customers\Customers_Update.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="EventsDB.refactorlog" />
