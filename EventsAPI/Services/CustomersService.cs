@@ -70,11 +70,12 @@ public class CustomersService : ICustomersService
             RefreshTokenModel = refreshToken.Result,
             CustomerInfo = new GetCustomersResponse
             {
+                CustomerId = CustomerInfo.CustomerId,
                 Username = CustomerInfo.Username,
-                Name = CustomerInfo.Name,
-                Location = CustomerInfo.Location,
-                Logo = CustomerInfo.Logo,
-                RoleId = CustomerInfo.RoleId
+                FirstName = CustomerInfo.FirstName,
+                LastName = CustomerInfo.LastName,
+                CountryId = CustomerInfo.CountryId,
+                Email = CustomerInfo.Email,
             }
         };
     }
@@ -90,11 +91,12 @@ public class CustomersService : ICustomersService
             RefreshTokenModel = newRefreshToken.Result,
             CustomerInfo = new GetCustomersResponse
             {
+                CustomerId = CustomerInfo.CustomerId,
                 Username = CustomerInfo.Username,
-                Name = CustomerInfo.Name,
-                Location = CustomerInfo.Location,
-                Logo = CustomerInfo.Logo,
-                RoleId = CustomerInfo.RoleId
+                FirstName = CustomerInfo.FirstName,
+                LastName = CustomerInfo.LastName,
+                CountryId = CustomerInfo.CountryId,
+                Email = CustomerInfo.Email,
             }
         };
     }    

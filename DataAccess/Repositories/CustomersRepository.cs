@@ -28,10 +28,10 @@ public class CustomersRepository : ICustomersRepository
             Customer.Username,
             Customer.Password,
             Customer.PasswordSalt,
-            Customer.Name,
-            Customer.Location,
-            Customer.Logo,
-            RoleId = 1
+            Customer.FirstName,
+            Customer.LastName,
+            Customer.Email,
+            Customer.CountryId,
         });
 
     public async Task<CustomerModel> GetCustomerInfoByUsername(string Username)
