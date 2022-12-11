@@ -2,6 +2,7 @@
 using DataAccess.Models.Auth;
 using DataAccess.Models.Responses;
 using EventsAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventsAPI.Controllers;
@@ -48,6 +49,7 @@ public class CustomersController : ControllerBase
         }
     }
 
+    [AllowAnonymous]
     [HttpPost]
     public async Task<IResult> Register(CustomerModel Customer)
     {
@@ -62,6 +64,7 @@ public class CustomersController : ControllerBase
         }
     }
     
+    [AllowAnonymous]
     [HttpPost]
     public async Task<IResult> Login(UserDto user)
     {

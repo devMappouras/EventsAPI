@@ -25,7 +25,7 @@ public class OrganisersRepository : IOrganisersRepository
     public Task RegisterOrganiser(OrganiserModel Organiser) => _db.SaveData("Organisers_Insert",
         new
         {
-            Organiser.Username,
+            Organiser.Email,
             Organiser.Password,
             Organiser.PasswordSalt,
             Organiser.Name,
@@ -34,9 +34,9 @@ public class OrganisersRepository : IOrganisersRepository
             RoleId = 1
         });
 
-    public async Task<OrganiserModel> GetOrganiserInfoByUsername(string Username)
+    public async Task<OrganiserModel> GetOrganiserInfoByUsername(string Email)
     {
-        var results = await _db.LoadData<OrganiserModel, dynamic>("Organisers_GetInfoForValidation", new { Username });
+        var results = await _db.LoadData<OrganiserModel, dynamic>("Organisers_GetInfoForValidation", new { Email });
         return results.FirstOrDefault();
     }
 

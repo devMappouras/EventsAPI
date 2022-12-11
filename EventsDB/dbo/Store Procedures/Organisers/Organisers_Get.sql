@@ -2,7 +2,7 @@
 	@OrganiserId INT
 AS
 
-SELECT Username, [Name] AS OrganiserName, Location, Logo
+SELECT Email, [Name] AS OrganiserName, Location, Logo
 
 FROM [dbo].[Organisers]
 WHERE OrganiserId = @OrganiserId

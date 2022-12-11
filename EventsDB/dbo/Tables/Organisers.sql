@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Organisers] (
     [OrganiserId]  INT            IDENTITY (1, 1) NOT NULL,
-    [Username]     NVARCHAR (50)  NOT NULL,
+    [Email]     NVARCHAR (50)  NOT NULL,
     [Password]     NVARCHAR (MAX) NOT NULL,
     [PasswordSalt] NVARCHAR (MAX) NOT NULL,
     [Name]         NVARCHAR (100) NOT NULL,

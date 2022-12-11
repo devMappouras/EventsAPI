@@ -45,7 +45,7 @@ public class CustomersService : ICustomersService
     
     public async Task<LoginCustomerResponse> LoginCustomer(UserDto user)
     {
-        var CustomerInfo = await _customersRepository.GetCustomerInfoByUsername(user.Username);
+        var CustomerInfo = await _customersRepository.GetCustomerInfoByUsername(user.Email);
 
         if (CustomerInfo == null)
             throw new Exception("User was not Found");
@@ -57,7 +57,7 @@ public class CustomersService : ICustomersService
             throw new Exception("Wrong Password");
 
         var userModel = new UserModel();
-        userModel.Username = user.Username;
+        userModel.Email = user.Email;
         userModel.PasswordHash = encodedPasswordHash;
         userModel.PasswordSalt = encodedPasswordSalt;
         
@@ -71,18 +71,17 @@ public class CustomersService : ICustomersService
             CustomerInfo = new GetCustomersResponse
             {
                 CustomerId = CustomerInfo.CustomerId,
-                Username = CustomerInfo.Username,
+                Email = CustomerInfo.Email,
                 FirstName = CustomerInfo.FirstName,
                 LastName = CustomerInfo.LastName,
                 CountryId = CustomerInfo.CountryId,
-                Email = CustomerInfo.Email,
             }
         };
     }
 
     public async Task<LoginCustomerResponse> RefreshToken(UserModel user)
     {
-        var CustomerInfo = await _customersRepository.GetCustomerInfoByUsername(user.Username);
+        var CustomerInfo = await _customersRepository.GetCustomerInfoByUsername(user.Email);
         var token = CreateToken(user, CustomerInfo);
         var newRefreshToken = GenerateRefreshToken();
         return new LoginCustomerResponse
@@ -92,11 +91,10 @@ public class CustomersService : ICustomersService
             CustomerInfo = new GetCustomersResponse
             {
                 CustomerId = CustomerInfo.CustomerId,
-                Username = CustomerInfo.Username,
+                Email = CustomerInfo.Email,
                 FirstName = CustomerInfo.FirstName,
                 LastName = CustomerInfo.LastName,
                 CountryId = CustomerInfo.CountryId,
-                Email = CustomerInfo.Email,
             }
         };
     }    
@@ -135,7 +133,7 @@ public class CustomersService : ICustomersService
 
         List<Claim> claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.Username),
+            new Claim(ClaimTypes.Name, user.Email),
             new Claim(ClaimTypes.NameIdentifier, CustomerId)
         };
 

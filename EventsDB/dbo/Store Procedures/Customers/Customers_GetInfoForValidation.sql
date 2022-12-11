@@ -1,8 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].Customers_GetInfoForValidation
-	@Username NVARCHAR(50)
+	@Email NVARCHAR(50)
 AS
 
-SELECT CustomerId, Username, Password, PasswordSalt, FirstName, LastName, Email, CountryId
+SELECT CustomerId, Email, Password, PasswordSalt, FirstName, LastName, CountryId
 
 FROM [dbo].[Customers]
-WHERE Username = @Username
+WHERE Email = @Email

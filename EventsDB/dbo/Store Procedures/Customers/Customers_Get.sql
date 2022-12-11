@@ -2,7 +2,7 @@
 	@CustomerId INT
 AS
 
-SELECT FirstName, LastName, Email, CountryId, Username
+SELECT FirstName, LastName, Email, CountryId
 
 FROM [dbo].[Customers]
 WHERE CustomerId = @CustomerId

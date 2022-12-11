@@ -42,7 +42,7 @@ public class OrganisersService : IOrganisersService
     
     public async Task<LoginOrganiserResponse> LoginOrganiser(UserDto user)
     {
-        var OrganiserInfo = await _organisersRepository.GetOrganiserInfoByUsername(user.Username);
+        var OrganiserInfo = await _organisersRepository.GetOrganiserInfoByUsername(user.Email);
 
         if (OrganiserInfo == null)
             throw new Exception("User was not Found");
@@ -54,7 +54,7 @@ public class OrganisersService : IOrganisersService
             throw new Exception("Wrong Password");
 
         var userModel = new UserModel();
-        userModel.Username = user.Username;
+        userModel.Email = user.Email;
         userModel.PasswordHash = encodedPasswordHash;
         userModel.PasswordSalt = encodedPasswordSalt;
         
@@ -67,7 +67,7 @@ public class OrganisersService : IOrganisersService
             RefreshTokenModel = refreshToken.Result,
             OrganiserInfo = new GetOrganisersResponse
             {
-                Username = OrganiserInfo.Username,
+                Email = OrganiserInfo.Email,
                 Name = OrganiserInfo.Name,
                 Location = OrganiserInfo.Location,
                 Logo = OrganiserInfo.Logo,
@@ -78,7 +78,7 @@ public class OrganisersService : IOrganisersService
 
     public async Task<LoginOrganiserResponse> RefreshToken(UserModel user)
     {
-        var organiserInfo = await _organisersRepository.GetOrganiserInfoByUsername(user.Username);
+        var organiserInfo = await _organisersRepository.GetOrganiserInfoByUsername(user.Email);
         var token = _userService.CreateToken(user, organiserInfo);
         var newRefreshToken = _userService.GenerateRefreshToken();
         return new LoginOrganiserResponse
@@ -87,7 +87,7 @@ public class OrganisersService : IOrganisersService
             RefreshTokenModel = newRefreshToken.Result,
             OrganiserInfo = new GetOrganisersResponse
             {
-                Username = organiserInfo.Username,
+                Email = organiserInfo.Email,
                 Name = organiserInfo.Name,
                 Location = organiserInfo.Location,
                 Logo = organiserInfo.Logo,

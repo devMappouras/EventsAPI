@@ -25,18 +25,17 @@ public class CustomersRepository : ICustomersRepository
     public Task RegisterCustomer(CustomerModel Customer) => _db.SaveData("Customers_Insert",
         new
         {
-            Customer.Username,
+            Customer.Email,
             Customer.Password,
             Customer.PasswordSalt,
             Customer.FirstName,
             Customer.LastName,
-            Customer.Email,
             Customer.CountryId,
         });
 
-    public async Task<CustomerModel> GetCustomerInfoByUsername(string Username)
+    public async Task<CustomerModel> GetCustomerInfoByUsername(string Email)
     {
-        var results = await _db.LoadData<CustomerModel, dynamic>("Customers_GetInfoForValidation", new { Username });
+        var results = await _db.LoadData<CustomerModel, dynamic>("Customers_GetInfoForValidation", new { Email });
         return results.FirstOrDefault();
     }
 

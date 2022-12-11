@@ -32,7 +32,7 @@ public class UserService : IUserService
 
         List<Claim> claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.Username),
+            new Claim(ClaimTypes.Name, user.Email),
             new Claim(ClaimTypes.Role, organiserRole),
             new Claim(ClaimTypes.NameIdentifier, organiserId)
         };

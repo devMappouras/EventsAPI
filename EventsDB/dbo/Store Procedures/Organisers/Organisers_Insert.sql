@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[Organisers_Insert]
-    @Username NVARCHAR(50),
+    @Email NVARCHAR(50),
     @Password NVARCHAR(MAX),
     @PasswordSalt NVARCHAR(MAX),
     @Name NVARCHAR(100),
@@ -9,5 +9,5 @@
     
 AS
 
-INSERT INTO dbo.Organisers (Username, Password, PasswordSalt, Name ,Location ,Logo, RoleId)
-VALUES (@Username, @Password, @PasswordSalt, @Name ,@Location ,@Logo, @RoleId);
+INSERT INTO dbo.Organisers (Email, Password, PasswordSalt, Name ,Location ,Logo, RoleId)
+VALUES (@Email, @Password, @PasswordSalt, @Name ,@Location ,@Logo, @RoleId);
