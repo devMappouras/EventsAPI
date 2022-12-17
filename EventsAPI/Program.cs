@@ -17,9 +17,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddEndpointsApiExplorer();
 
-//Allows to access Authorised User Identifier
-builder.Services.AddHttpContextAccessor();
-
 /* REPOSITORY - SERVICES DI */
 //lDataAccess DI
 builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
@@ -44,6 +41,9 @@ builder.Services.AddTransient<IProductsService, ProductsService>();
 builder.Services.AddTransient<ICountriesService, CountriesService>();
 builder.Services.AddTransient<IHierarchiesService, HierarchiesService>();
 builder.Services.AddTransient<ICustomersService, CustomersService>();
+
+//Allows to access Authorised User Identifier
+builder.Services.AddHttpContextAccessor();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 //Swagger and Swagger Athentication
@@ -94,7 +94,5 @@ app.UseCors(MyAllowSpecificOrigins);
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-//app.UseStaticFiles();
-//app.UseRouting();
 app.MapControllers();
 app.Run();

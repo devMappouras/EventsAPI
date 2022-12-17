@@ -2,6 +2,7 @@
 using DataAccess.Models.Requests;
 using DataAccess.Models.Responses;
 using EventsAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventsAPI.Controllers;
@@ -21,7 +22,7 @@ public class ProductsController : ControllerBase
         _hierarchiesService = hierarchiesService;
     }
 
-    [HttpGet]
+    [HttpGet, Authorize]
     public async Task<IResult> GetProducts()
     {
         try
@@ -49,7 +50,7 @@ public class ProductsController : ControllerBase
         }
     }
 
-    [HttpPost]
+    [HttpPost, Authorize]
     public async Task<IResult> InsertProduct(ProductModel Product)
     {
         try
@@ -63,7 +64,7 @@ public class ProductsController : ControllerBase
         }
     }
 
-    [HttpPut]
+    [HttpPut, Authorize]
     public async Task<IResult> UpdateProduct(ProductModel Product)
     {
         try
@@ -77,7 +78,7 @@ public class ProductsController : ControllerBase
         }
     }
 
-    [HttpPost]
+    [HttpPost, Authorize]
     public async Task<IResult> DeleteProduct([FromBody] int ProductId)
     {
         try
@@ -106,7 +107,7 @@ public class ProductsController : ControllerBase
         }
     }
     
-    [HttpPost]
+    [HttpPost, Authorize]
     public async Task<IResult> SetEventProducts(SetEventProductsRequest request)
     {
         try

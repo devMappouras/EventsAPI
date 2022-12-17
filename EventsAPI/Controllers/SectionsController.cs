@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SectionsAPI.Services.Interfaces;
 using DataAccess.Models;
+using Microsoft.AspNetCore.Authorization;
 
 [ApiController]
 [Route("EventsApi/[controller]/[action]")]
@@ -41,7 +42,7 @@ public class SectionsController : ControllerBase
         }
     }
 
-    [HttpPost]
+    [HttpPost, Authorize]
     public async Task<IResult> InsertSection(SectionModel Section)
     {
         try
@@ -55,7 +56,7 @@ public class SectionsController : ControllerBase
         }
     }
 
-    [HttpPut]
+    [HttpPut, Authorize]
     public async Task<IResult> UpdateSection(SectionModel Section)
     {
         try
@@ -69,7 +70,7 @@ public class SectionsController : ControllerBase
         }
     }
 
-    [HttpPost]
+    [HttpPost, Authorize]
     public async Task<IResult> DeleteSection([FromBody] int SectionId)
     {
         try

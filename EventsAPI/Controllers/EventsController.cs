@@ -1,6 +1,7 @@
 ﻿using DataAccess.Models;
 using DataAccess.Models.Responses;
 using EventsAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventsAPI.Controllers;
@@ -13,14 +14,14 @@ public class EventsController : ControllerBase
     private readonly IVenuesService _venuesService;
     private readonly ICollectionsService _collectionsService;
 
-    public EventsController(IEventsService EventsService, IVenuesService venuesService, ICollectionsService collectionsService)
+    public EventsController(IEventsService eventsService, IVenuesService venuesService, ICollectionsService collectionsService)
     {
-        _eventsService = EventsService;
+        _eventsService = eventsService;
         _venuesService = venuesService;
         _collectionsService = collectionsService;
     }
 
-    [HttpGet]
+    [HttpGet, Authorize]
     public async Task<IResult> GetEvents()
     {
         try
@@ -48,7 +49,7 @@ public class EventsController : ControllerBase
         }
     }
 
-    [HttpPost]
+    [HttpPost, Authorize]
     public async Task<IResult> InsertEvent(EventModel Event)
     {
         try
@@ -62,7 +63,7 @@ public class EventsController : ControllerBase
         }
     }
 
-    [HttpPut]
+    [HttpPut, Authorize]
     public async Task<IResult> UpdateEvent(EventModel Event)
     {
         try
@@ -76,7 +77,7 @@ public class EventsController : ControllerBase
         }
     }
 
-    [HttpPost]
+    [HttpPost, Authorize]
     public async Task<IResult> DeleteEvent([FromBody] int EventId)
     {
         try

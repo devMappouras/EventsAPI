@@ -2,6 +2,7 @@
 using DataAccess.Models.Auth;
 using DataAccess.Models.Responses;
 using EventsAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventsAPI.Controllers;
@@ -20,7 +21,7 @@ public class OrganisersController : ControllerBase
         _configuration = configuration;
     }
 
-    [HttpGet]
+    [HttpGet, Authorize]
     public async Task<IResult> GetOrganisers()
     {
         try
@@ -102,7 +103,7 @@ public class OrganisersController : ControllerBase
         }
     }
 
-    [HttpPut]
+    [HttpPut, Authorize]
     public async Task<IResult> UpdateOrganiser(OrganiserModel Organiser)
     {
         try
@@ -116,7 +117,7 @@ public class OrganisersController : ControllerBase
         }
     }
 
-    [HttpPost]
+    [HttpPost, Authorize]
     public async Task<IResult> DisableOrganiser(int OrganiserId)
     {
         try

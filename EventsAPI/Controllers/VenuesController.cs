@@ -1,5 +1,6 @@
 ﻿using DataAccess.Models;
 using EventsAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventsAPI.Controllers;
@@ -43,7 +44,7 @@ public class VenuesController : ControllerBase
         }
     }
 
-    [HttpPost]
+    [HttpPost, Authorize]
     public async Task<IResult> InsertVenue(VenueModel venue)
     {
         try
@@ -57,7 +58,7 @@ public class VenuesController : ControllerBase
         }
     }
 
-    [HttpPut]
+    [HttpPut, Authorize]
     public async Task<IResult> UpdateVenue(VenueModel venue)
     {
         try
@@ -71,7 +72,7 @@ public class VenuesController : ControllerBase
         }
     }
 
-    [HttpPost]
+    [HttpPost, Authorize]
     public async Task<IResult> DeleteVenue([FromBody] int venueId)
     {
         try

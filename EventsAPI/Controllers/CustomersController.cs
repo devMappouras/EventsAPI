@@ -21,7 +21,7 @@ public class CustomersController : ControllerBase
         _configuration = configuration;
     }
 
-    [HttpGet]
+    [HttpGet, Authorize]
     public async Task<IResult> GetCustomers()
     {
         try

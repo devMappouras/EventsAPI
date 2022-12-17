@@ -1,5 +1,6 @@
 ﻿using DataAccess.Models;
 using EventsAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -41,7 +42,7 @@ public class CollectionsController : ControllerBase
         }
     }
 
-    [HttpPost]
+    [HttpPost, Authorize]
     public async Task<IResult> InsertCollection(CollectionModel Collection)
     {
         try
@@ -55,7 +56,7 @@ public class CollectionsController : ControllerBase
         }
     }
 
-    [HttpPut]
+    [HttpPut, Authorize]
     public async Task<IResult> UpdateCollection(CollectionModel Collection)
     {
         try
@@ -69,7 +70,7 @@ public class CollectionsController : ControllerBase
         }
     }
 
-    [HttpPost]
+    [HttpPost, Authorize]
     public async Task<IResult> DeleteCollection(int CollectionId)
     {
         try
