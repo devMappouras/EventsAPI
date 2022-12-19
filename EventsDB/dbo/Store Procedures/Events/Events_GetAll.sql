@@ -7,6 +7,7 @@ SELECT [EventId]
       ,[EventDescription]
       ,[EventDateTime]
       ,[BannerImage]
+     ,E.[CategoryId]
       ,CA.[CategoryName]
       ,E.[VenueId]
       ,V.Name AS VenueName
