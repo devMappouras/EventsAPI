@@ -13,12 +13,14 @@ public class EventsController : ControllerBase
     private readonly IEventsService _eventsService;
     private readonly IVenuesService _venuesService;
     private readonly ICollectionsService _collectionsService;
+    private readonly ICategoriesService _categoriesService;
 
-    public EventsController(IEventsService eventsService, IVenuesService venuesService, ICollectionsService collectionsService)
+    public EventsController(IEventsService eventsService, IVenuesService venuesService, ICollectionsService collectionsService, ICategoriesService categoriesService)
     {
         _eventsService = eventsService;
         _venuesService = venuesService;
         _collectionsService = collectionsService;
+        _categoriesService = categoriesService;
     }
 
     [HttpGet, Authorize]
@@ -98,8 +100,9 @@ public class EventsController : ControllerBase
         {
             var venues = await _venuesService.GetVenues();
             var collections = await _collectionsService.GetCollections();
+            var categories = await _categoriesService.GetCategories();
 
-            return Results.Ok(new GetVenuesAndCollections(venues.ToList(), collections.ToList()));
+            return Results.Ok(new GetVenuesAndCollections(venues.ToList(), collections.ToList(), categories.ToList()));
         }
         catch (Exception ex)
         {

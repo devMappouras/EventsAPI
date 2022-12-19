@@ -4,6 +4,9 @@
     [Address]   NVARCHAR (150) NULL,
     [Town]      NVARCHAR (50)  NULL,
     [CountryId] INT            NULL,
-    CONSTRAINT [PK_Venues] PRIMARY KEY CLUSTERED ([VenueId] ASC)
+    CONSTRAINT [PK_Venues] PRIMARY KEY CLUSTERED ([VenueId] ASC),
+    CONSTRAINT [FK_Venues_Countries] FOREIGN KEY ([CountryId]) REFERENCES [dbo].[Countries] ([CountryId])
 );
+
+
 

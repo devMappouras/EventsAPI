@@ -69,6 +69,7 @@
     <Folder Include="dbo\Store Procedures\Hierarchies\" />
     <Folder Include="dbo\Stored Procedures\" />
     <Folder Include="dbo\Store Procedures\Customers" />
+    <Folder Include="dbo\Store Procedures\Categories" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Store Procedures\Countries\Countries_GetAll.sql" />
@@ -127,6 +128,12 @@
     <Build Include="dbo\Store Procedures\Customers\Customers_GetInfoForValidation.sql" />
     <Build Include="dbo\Store Procedures\Customers\Customers_Insert.sql" />
     <Build Include="dbo\Store Procedures\Customers\Customers_Update.sql" />
+    <Build Include="dbo\Tables\Tickets.sql" />
+    <Build Include="dbo\Tables\Categories.sql" />
+    <Build Include="dbo\Store Procedures\Categories\Categories_Delete.sql" />
+    <Build Include="dbo\Store Procedures\Categories\Categories_Get.sql" />
+    <Build Include="dbo\Store Procedures\Categories\Categories_GetAll.sql" />
+    <Build Include="dbo\Store Procedures\Categories\Categories_Insert.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="EventsDB.refactorlog" />

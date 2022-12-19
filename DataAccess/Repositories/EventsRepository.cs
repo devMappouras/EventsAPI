@@ -30,6 +30,7 @@ public class EventsRepository : IEventsRepository
             Event.EventDescription,
             Event.EventDateTime,
             Event.BannerImage,
+            Event.CategoryId,
             Event.CollectionId,
             Event.OrganiserId,
             Event.VenueId

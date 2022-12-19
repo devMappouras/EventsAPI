@@ -7,6 +7,7 @@ SELECT [EventId]
       ,[EventDescription]
       ,[EventDateTime]
       ,[BannerImage]
+      ,CA.[CategoryName]
       ,E.[VenueId]
       ,V.Name AS VenueName
       ,E.[CollectionId]
@@ -15,5 +16,6 @@ SELECT [EventId]
 FROM [dbo].[Events] E
 INNER JOIN Venues V ON V.VenueId = E.VenueId
 LEFT JOIN Collections C ON C.CollectionId = E.CollectionId
+LEFT JOIN Categories CA ON CA.CategoryId = E.CategoryId
 
 WHERE E.OrganiserId = @OrganiserId
