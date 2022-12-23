@@ -58,7 +58,6 @@
     <Folder Include="Properties" />
     <Folder Include="dbo" />
     <Folder Include="dbo\Store Procedures\Venues" />
-    <Folder Include="dbo\Store Procedures\Events" />
     <Folder Include="dbo\Store Procedures\Organisers" />
     <Folder Include="dbo\Store Procedures\Sections" />
     <Folder Include="dbo\Store Procedures\Collections" />
@@ -73,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Store Procedures\Countries\Countries_GetAll.sql" />
+    <Build Include="dbo\Store Procedures\Events\Events_Customer_GetHomeScreenEvents.sql" />
     <Build Include="dbo\Store Procedures\Hierarchies\Hierarchies_GetAllByVenue.sql" />
     <Build Include="dbo\Store Procedures\Hierarchies\Venues_GetAll.sql" />
     <Build Include="dbo\Store Procedures\Products\Products_Delete.sql" />
