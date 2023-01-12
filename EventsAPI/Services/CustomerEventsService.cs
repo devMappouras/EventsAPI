@@ -7,21 +7,21 @@ namespace EventsAPI.Services
 {
     public class CustomerEventsService : ICustomerEventsService
     {
-        private readonly IEventsRepository _EventsRepository;
+        private readonly ICustomerEventsRepository _customerEventsRepository;
 
-        public CustomerEventsService(IEventsRepository EventsRepository)
+        public CustomerEventsService(ICustomerEventsRepository customerEventsRepository)
         {
-            _EventsRepository = EventsRepository;
+            _customerEventsRepository = customerEventsRepository;
         }
 
         public async Task<IEnumerable<GetEventsResponse>> GetHomeScreenEvents(int CustomerId)
         {
-            return await _EventsRepository.GetHomeScreenEvents(CustomerId);
+            return await _customerEventsRepository.GetHomeScreenEvents(CustomerId);
         }
 
         public async Task<EventModel> GetEventById(int id)
         {
-            return await _EventsRepository.GetEventById(id);
+            return await _customerEventsRepository.GetEventById(id);
         }
     }
 }

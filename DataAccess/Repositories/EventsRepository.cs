@@ -2,27 +2,23 @@
 using DataAccess.Models;
 using DataAccess.Models.Responses;
 using DataAccess.Repositories.Interfaces;
-
 namespace DataAccess.Repositories;
-
 public class EventsRepository : IEventsRepository
 {
     private readonly ISqlDataAccess _db;
-
     public EventsRepository(ISqlDataAccess db)
     {
         _db = db;
     }
 
-    public async Task<IEnumerable<GetEventsResponse>> GetHomeScreenEvents(int CustomerId) => 
-        await _db.LoadData<GetEventsResponse, dynamic>("Events_Customer_GetHomeScreenEvents", new { CustomerId });
+    public async Task<IEnumerable<GetEventsResponse>> GetEvents(int OrganiserId) => 
+        await _db.LoadData<GetEventsResponse, dynamic>("Events_GetAll", new { OrganiserId });
 
     public async Task<EventModel?> GetEventById(int EventId)
     {
         var results = await _db.LoadData<EventModel, dynamic>("Events_Get", new { EventId });
         return results.FirstOrDefault();
     }
-
     public Task InsertEvent(EventModel Event) => _db.SaveData("Events_Insert",
         new
         {
@@ -35,10 +31,8 @@ public class EventsRepository : IEventsRepository
             Event.OrganiserId,
             Event.VenueId
         });
-
     public Task UpdateEvent(EventModel Event) => 
         _db.SaveData("Events_Update", Event);
-
     public Task DeleteEvent(int EventId) => 
         _db.SaveData("Events_Delete", new { EventId });
 }
