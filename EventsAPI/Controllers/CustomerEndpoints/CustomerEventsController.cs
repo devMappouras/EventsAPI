@@ -23,7 +23,7 @@ public class CustomerEventsController : ControllerBase
         _categoriesService = categoriesService;
     }
 
-    [HttpGet, Authorize]
+    [HttpGet]
     public async Task<IResult> GetHomeScreenEvents(int CustomerId)
     {
         try
