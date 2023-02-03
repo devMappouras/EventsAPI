@@ -1,10 +1,8 @@
-﻿using DataAccess.Models;
-using DataAccess.Models.Responses;
+﻿using DataAccess.Models.Responses;
 using EventsAPI.Services.Interfaces;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EventsAPI.Controllers;
+namespace EventsAPI.Controllers.CustomerEndpoints;
 
 [ApiController]
 [Route("EventsApi/[controller]/[action]")]
