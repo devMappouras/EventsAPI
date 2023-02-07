@@ -17,6 +17,11 @@ namespace EventsAPI.Services
         public async Task<IEnumerable<GetEventsResponse>> GetHomeScreenEvents(int CustomerId)
         {
             return await _customerEventsRepository.GetHomeScreenEvents(CustomerId);
+        }        
+        
+        public async Task<IEnumerable<GetEventsResponse>> GetExploreEvents(int CustomerId)
+        {
+            return await _customerEventsRepository.GetExploreEvents(CustomerId);
         }
 
         public async Task<EventModel> GetEventById(int id)

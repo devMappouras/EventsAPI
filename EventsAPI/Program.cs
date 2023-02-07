@@ -30,6 +30,7 @@ builder.Services.AddTransient<ICountriesRepository, CountriesRepository>();
 builder.Services.AddTransient<IHierarchiesRepository, HierarchiesRepository>();
 builder.Services.AddTransient<ICustomersRepository, CustomersRepository>();
 builder.Services.AddTransient<ICategoriesRepository, CategoriesRepository>();
+builder.Services.AddTransient<ICustomerEventsRepository, CustomerEventsRepository>();
 
 //Application Services DI
 builder.Services.AddScoped<IUserService, UserService>();
@@ -43,6 +44,7 @@ builder.Services.AddTransient<ICountriesService, CountriesService>();
 builder.Services.AddTransient<IHierarchiesService, HierarchiesService>();
 builder.Services.AddTransient<ICustomersService, CustomersService>();
 builder.Services.AddTransient<ICategoriesService, CategoriesService>();
+builder.Services.AddTransient<ICustomerEventsService, CustomerEventsService>();
 
 //Allows to access Authorised User Identifier
 builder.Services.AddHttpContextAccessor();

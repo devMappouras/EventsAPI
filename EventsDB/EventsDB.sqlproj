@@ -69,9 +69,11 @@
     <Folder Include="dbo\Stored Procedures\" />
     <Folder Include="dbo\Store Procedures\Customers" />
     <Folder Include="dbo\Store Procedures\Categories" />
+    <Folder Include="dbo\Store Procedures\Events\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Store Procedures\Countries\Countries_GetAll.sql" />
+    <Build Include="dbo\Store Procedures\Events\Events_Customer_GetExploreEvents.sql" />
     <Build Include="dbo\Store Procedures\Events\Events_Customer_GetHomeScreenEvents.sql" />
     <Build Include="dbo\Store Procedures\Hierarchies\Hierarchies_GetAllByVenue.sql" />
     <Build Include="dbo\Store Procedures\Hierarchies\Venues_GetAll.sql" />

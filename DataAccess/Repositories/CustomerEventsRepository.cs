@@ -15,7 +15,10 @@ public class CustomerEventsRepository : ICustomerEventsRepository
     }
 
     public async Task<IEnumerable<GetEventsResponse>> GetHomeScreenEvents(int CustomerId) => 
-        await _db.LoadData<GetEventsResponse, dynamic>("Events_Customer_GetHomeScreenEvents", new { CustomerId });
+        await _db.LoadData<GetEventsResponse, dynamic>("Events_Customer_GetHomeScreenEvents", new { CustomerId });    
+    
+    public async Task<IEnumerable<GetEventsResponse>> GetExploreEvents(int CustomerId) => 
+        await _db.LoadData<GetEventsResponse, dynamic>("Events_Customer_GetExploreEvents", new { CustomerId });
 
     public async Task<EventModel?> GetEventById(int EventId)
     {

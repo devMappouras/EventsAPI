@@ -33,6 +33,19 @@ public class CustomerEventsController : ControllerBase
             return Results.Problem(ex.Message);
         }
     }
+    
+    [HttpGet]
+    public async Task<IResult> GetExploreEvents(int CustomerId)
+    {
+        try
+        {
+            return Results.Ok(await _customerEventsService.GetExploreEvents(CustomerId));
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message);
+        }
+    }
 
     [HttpGet]
     public async Task<IResult> GetEventById(int EventId)

@@ -8,5 +8,6 @@ namespace EventsAPI.Services.Interfaces
         Task<EventModel> GetEventById(int id);
 
         Task<IEnumerable<GetEventsResponse>> GetHomeScreenEvents(int CustomerId);
+        Task<IEnumerable<GetEventsResponse>> GetExploreEvents(int CustomerId);
     }
 }
