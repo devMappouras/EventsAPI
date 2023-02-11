@@ -20,6 +20,9 @@ public class CustomerEventsRepository : ICustomerEventsRepository
     public async Task<IEnumerable<GetEventsResponse>> GetExploreEvents(int CustomerId) => 
         await _db.LoadData<GetEventsResponse, dynamic>("Events_Customer_GetExploreEvents", new { CustomerId });
 
+    public async Task<IEnumerable<GetEventProductsForCustomerResponse>> GetEventProductsForCustomer(int EventId) => 
+        await _db.LoadData<GetEventProductsForCustomerResponse, dynamic>("EventProducts_Customers_GetCustomersEventProducts", new { EventId });
+
     public async Task<EventModel?> GetEventById(int EventId)
     {
         var results = await _db.LoadData<EventModel, dynamic>("Events_Get", new { EventId });

@@ -24,6 +24,11 @@ namespace EventsAPI.Services
             return await _customerEventsRepository.GetExploreEvents(CustomerId);
         }
 
+        public async Task<IEnumerable<GetEventProductsForCustomerResponse>> GetEventProductsForCustomer(int EventId)
+        {
+            return await _customerEventsRepository.GetEventProductsForCustomer(EventId);
+        }
+
         public async Task<EventModel> GetEventById(int id)
         {
             return await _customerEventsRepository.GetEventById(id);

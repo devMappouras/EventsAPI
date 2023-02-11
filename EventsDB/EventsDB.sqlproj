@@ -136,6 +136,7 @@
     <Build Include="dbo\Store Procedures\Categories\Categories_Get.sql" />
     <Build Include="dbo\Store Procedures\Categories\Categories_GetAll.sql" />
     <Build Include="dbo\Store Procedures\Categories\Categories_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\EventProducts_Customers_GetCustomersEventProducts.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="EventsDB.refactorlog" />

@@ -10,15 +10,11 @@ public class CustomerEventsController : ControllerBase
 {
     private readonly ICustomerEventsService _customerEventsService;
     private readonly IVenuesService _venuesService;
-    private readonly ICollectionsService _collectionsService;
-    private readonly ICategoriesService _categoriesService;
 
-    public CustomerEventsController(ICustomerEventsService customerEventsService, IVenuesService venuesService, ICollectionsService collectionsService, ICategoriesService categoriesService)
+    public CustomerEventsController(ICustomerEventsService customerEventsService, IVenuesService venuesService)
     {
         _customerEventsService = customerEventsService;
         _venuesService = venuesService;
-        _collectionsService = collectionsService;
-        _categoriesService = categoriesService;
     }
 
     [HttpGet]
@@ -46,6 +42,19 @@ public class CustomerEventsController : ControllerBase
             return Results.Problem(ex.Message);
         }
     }
+    
+    [HttpGet]
+    public async Task<IResult> GetEventProductsForCustomer(int EventId)
+    {
+        try
+        {
+            return Results.Ok(await _customerEventsService.GetEventProductsForCustomer(EventId));
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message);
+        }
+    }
 
     [HttpGet]
     public async Task<IResult> GetEventById(int EventId)
@@ -63,15 +72,11 @@ public class CustomerEventsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IResult> GetVenuesAndCollections()
+    public async Task<IResult> GetVenues()
     {
         try
         {
-            var venues = await _venuesService.GetVenues();
-            var collections = await _collectionsService.GetCollections();
-            var categories = await _categoriesService.GetCategories();
-
-            return Results.Ok(new GetVenuesAndCollections(venues.ToList(), collections.ToList(), categories.ToList()));
+            return Results.Ok(await _venuesService.GetVenues());
         }
         catch (Exception ex)
         {
