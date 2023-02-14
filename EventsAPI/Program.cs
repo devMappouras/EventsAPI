@@ -31,6 +31,7 @@ builder.Services.AddTransient<IHierarchiesRepository, HierarchiesRepository>();
 builder.Services.AddTransient<ICustomersRepository, CustomersRepository>();
 builder.Services.AddTransient<ICategoriesRepository, CategoriesRepository>();
 builder.Services.AddTransient<ICustomerEventsRepository, CustomerEventsRepository>();
+builder.Services.AddTransient<ICustomerPurchasesRepository, CustomerPurchasesRepository>();
 
 //Application Services DI
 builder.Services.AddScoped<IUserService, UserService>();

@@ -137,6 +137,10 @@
     <Build Include="dbo\Store Procedures\Categories\Categories_GetAll.sql" />
     <Build Include="dbo\Store Procedures\Categories\Categories_Insert.sql" />
     <Build Include="dbo\Stored Procedures\EventProducts_Customers_GetCustomersEventProducts.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets_GetTickets.sql" />
+    <Build Include="dbo\Stored Procedures\Tickets_AddTicket.sql" />
+    <Build Include="dbo\Stored Procedures\Purchases_InitializePurchase.sql" />
+    <Build Include="dbo\Stored Procedures\Purchase_CompletePurchase.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="EventsDB.refactorlog" />
