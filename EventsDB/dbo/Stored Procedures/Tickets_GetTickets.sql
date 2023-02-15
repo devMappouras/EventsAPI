@@ -19,8 +19,8 @@ INNER JOIN Sections S ON S.SectionId = T.SectionId
 INNER JOIN EventProducts EP ON EP.EventProductId = T.EventProductId
 INNER JOIN [Events] E ON E.EventId = EP.EventId
 INNER JOIN Products P ON P.ProductId = EP.ProductId
-INNER JOIN Category C ON C.CategoryId = E.CategoryId
-INNER JOIN Venue V ON V.VenueId = E.VenueId
-INNER JOIN Hierarchy H ON H.HierarchyId = P.HierarchyId
+INNER JOIN Categories C ON C.CategoryId = E.CategoryId
+INNER JOIN Venues V ON V.VenueId = E.VenueId
+INNER JOIN Hierarchies H ON H.HierarchyId = P.HierarchyId
 
 WHERE T.OwnerId = @CustomerId

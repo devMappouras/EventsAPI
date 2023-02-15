@@ -5,3 +5,5 @@ AS
 
 INSERT INTO Purchases
 VALUES (@CustomerId, @PurchaseStatusId);
+
+SELECT SCOPE_IDENTITY();

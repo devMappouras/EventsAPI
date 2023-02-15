@@ -46,6 +46,7 @@ builder.Services.AddTransient<IHierarchiesService, HierarchiesService>();
 builder.Services.AddTransient<ICustomersService, CustomersService>();
 builder.Services.AddTransient<ICategoriesService, CategoriesService>();
 builder.Services.AddTransient<ICustomerEventsService, CustomerEventsService>();
+builder.Services.AddTransient<ICustomerPurchasesService, CustomerPurchasesService>();
 
 //Allows to access Authorised User Identifier
 builder.Services.AddHttpContextAccessor();

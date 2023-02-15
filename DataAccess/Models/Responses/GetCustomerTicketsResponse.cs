@@ -5,7 +5,7 @@
         public int? TicketId { get; set; }
         public int? EventId { get; set; }
         public string EventTitle { get; set; } = String.Empty;
-        public string EventDateTime { get; set; } = String.Empty;
+        public DateTimeOffset? EventDateTime { get; set; }
         public int? VenueId { get; set; }
         public string VenueName { get; set; } = String.Empty;
         public int? CategoryId { get; set; }
