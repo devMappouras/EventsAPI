@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE EventProducts_Customers_GetCustomersEventProducts
+﻿CREATE PROCEDURE [dbo].[EventProducts_Customers_GetCustomersEventProducts]
 	@EventId INT
 AS
 
@@ -7,5 +7,5 @@ FROM EventProducts EP
 INNER JOIN [Events] E ON E.EventId = EP.EventId
 INNER JOIN [Products] P ON P.ProductId = EP.ProductId
 INNER JOIN Hierarchies H ON H.HierarchyId = P.HierarchyId
-INNER JOIN Sections S ON S.HierarchyId = H.HierarchyId
+INNER JOIN Sections S ON S.HierarchyId = H.HierarchyId AND E.VenueId = S.VenueId
 WHERE EP.EventId = @EventId
