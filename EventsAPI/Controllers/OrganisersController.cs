@@ -15,9 +15,9 @@ public class OrganisersController : ControllerBase
     private readonly IConfiguration _configuration;
     private readonly IOrganisersService _organisersService;
 
-    public OrganisersController(IOrganisersService OrganisersService, IConfiguration configuration)
+    public OrganisersController(IOrganisersService organisersService, IConfiguration configuration)
     {
-        _organisersService = OrganisersService;
+        _organisersService = organisersService;
         _configuration = configuration;
     }
 

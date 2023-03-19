@@ -31,9 +31,6 @@ public class OrganisersService : IOrganisersService
     public async Task RegisterOrganiser(OrganiserModel Organiser)
     {
         CreatePasswordHash(Organiser.Password, out byte[] passwordHash, out byte[] passwordSalt);
-
-        //Organiser.Password = System.Text.Encoding.UTF8.GetString(passwordHash);
-        //Organiser.PasswordSalt = System.Text.Encoding.UTF8.GetString(passwordSalt);
         Organiser.Password = Convert.ToBase64String(passwordHash);
         Organiser.PasswordSalt = Convert.ToBase64String(passwordSalt);
         
